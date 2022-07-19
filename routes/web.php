@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('/', [WelcomeController::class, 'index']);
+
+Auth::routes(['verify' => true]);
+
+Route::get('/packages', [
+    'uses' => 'WelcomeController@packages',
+    'as' => 'packages'
+]);
+
+Route::get('/news', [
+    'uses' => 'WelcomeController@blog',
+    'as' => 'blog'
+]);
+
+Route::get('/contact', [
+    'uses' => 'WelcomeController@contact',
+    'as' => 'contact'
+]);
+Route::get('/about', [
+    'uses' => 'WelcomeController@about',
+    'as' => 'about'
+]);
