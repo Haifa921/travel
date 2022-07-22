@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
+
+    public function blogs()
+    {
+        return $this->morphedByMany(Blog::class, 'taggable');
+    }
+    
+    public function tours()
+    {
+        return $this->morphedByMany(Tours::class, 'taggable');
+    }
 }
