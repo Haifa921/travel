@@ -15,6 +15,7 @@ class CreateRestaurantsTable extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('country_id')->constrained();
             $table->string('name');
             $table->integer('stars');
             $table->integer('capacity');

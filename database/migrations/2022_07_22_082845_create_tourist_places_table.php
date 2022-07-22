@@ -16,6 +16,7 @@ class CreateTouristPlacesTable extends Migration
         Schema::create('tourist_places', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained();
+            $table->foreignId('country_id')->constrained();
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description');
