@@ -18,6 +18,8 @@ class TourSeeder extends Seeder
      */
     public function run()
     {
+        // country seeding
+        // TODO: add image to country
         $country1 = Country::create([
             'name' => 'Syria'
         ]);
@@ -30,6 +32,7 @@ class TourSeeder extends Seeder
         $country4 = Country::create([
             'name' => 'Canada'
         ]);
+        // categories seeding
 
         $category1 = Category::create([
             'name' => 'Religious Sites',
@@ -51,7 +54,8 @@ class TourSeeder extends Seeder
             'name' => 'Castles',
             'slug' => Str::slug('Castles', '-')
         ]);
-
+        
+        // places seeding
         $touristPlaces = [
             [
                 'name' => 'Damascus Umayyad Mosque',

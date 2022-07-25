@@ -15,4 +15,8 @@ class Country extends Model
     {
         return $this->hasMany(TouristPlace::class);
     }
+    public function media()
+    {
+        return $this->morphOne(Media::class, 'mediable');
+    }
 }
