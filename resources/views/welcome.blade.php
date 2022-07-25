@@ -234,46 +234,19 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3 ftco-animate">
-				<div class="project-destination">
-					<a href="#" class="img" style="background-image: url(images/place-1.jpg);">
-						<div class="text">
-							<h3>Singapore</h3>
-							<span>8 Tours</span>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-3 ftco-animate">
-				<div class="project-destination">
-					<a href="#" class="img" style="background-image: url(images/place-2.jpg);">
-						<div class="text">
-							<h3>Canada</h3>
-							<span>2 Tours</span>
-						</div>
-					</a>
-				</div>
-			</div>
+		@foreach($destinations as $d)
 			<div class="col-md-3 ftco-animate">
 				<div class="project-destination">
 					<a href="#" class="img" style="background-image: url(images/place-3.jpg);">
 						<div class="text">
-							<h3>Thailand</h3>
-							<span>5 Tours</span>
+							<h3>{{$d->name}}</h3>
+							<span>{{$d->tours_count}}</span>
 						</div>
 					</a>
 				</div>
 			</div>
-			<div class="col-md-3 ftco-animate">
-				<div class="project-destination">
-					<a href="#" class="img" style="background-image: url(images/place-4.jpg);">
-						<div class="text">
-							<h3>Australia</h3>
-							<span>5 Tours</span>
-						</div>
-					</a>
-				</div>
-			</div>
+		@endforeach
+			
 		</div>
 	</div>
 </section>
@@ -282,24 +255,24 @@
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-12 heading-section text-center ftco-animate">
-				<h2 class="mb-4">Tour Destination</h2>
+				<h2 class="mb-4">Tourist Places</h2>
 			</div>
 		</div>
 		<div class="row">
 
-			@foreach ($destinations as $destination)
+			@foreach ($places as $p)
 			<div class="col-md-4 ftco-animate">
 				<div class="project-wrap">
-				<a href="#" class="img" style="background-image: url(images/destination-2.jpg);">
-						<p>
-							{{$destination->category->name}}
+				<a href="#" class="img" style="background-image: url('images/{{$p->media[0]->file_path}}');">
+						<p class="p-2">
+							{{$p->category->name}}
 						</p>
 					</a>
 					<div class="text p-4">
-						<span class="price">{{$destination->pricing}}</span>
+						<span class="price">{{$p->price}}</span>
 						<span class="days">10 Days Tour</span>
-						<h3><a href="{{route('desti.show', $destination->id)}}">
-								{{$destination->title}}
+						<h3><a href="#">
+								{{$p->title}}
 							</a></h3>
 						<ul>
 							<li><span class="flaticon-shower"></span>2</li>

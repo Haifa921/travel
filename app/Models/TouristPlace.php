@@ -15,4 +15,14 @@ class TouristPlace extends Model
     {
         return $this->morphMany(Media::class, 'mediable');
     }
+    public function tours()
+    {
+        return $this->hasMany(Tour::class);
+    }
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
 }
