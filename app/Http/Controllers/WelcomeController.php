@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Tag;
+use App\Models\Tour;
 use App\Models\TouristPlace;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -28,8 +30,11 @@ class WelcomeController extends Controller
         $places = TouristPlace::withCount('tours')->orderBy('tours_count')->take(9)->get();
         // dd($destinations);
         return view('welcome')
-        ->with('destinations', $destinations)
-        ->with('places', $places)
+            ->with('users_count', User::count())
+            ->with('tours_count', Tour::count())
+            ->with('places_count', TouristPlace::count())
+            ->with('destinations', $destinations)
+            ->with('places', $places)
             ->with('categories', Category::all())
             ->with('tags', []);
     }

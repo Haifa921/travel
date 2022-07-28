@@ -3,7 +3,7 @@
 @section('page')
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="">Safari<span>Travel Agency</span></a>
+            <a class="navbar-brand" href="">Travelz<span>Travel Agency</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
@@ -31,10 +31,10 @@
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
                 data-scrollax-parent="true">
                 <div class="col-md-9 text text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                    <a href="https://vimeo.com/45830194"
+                    {{-- <a href="https://vimeo.com/45830194"
                         class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
                         <span class="ion-ios-play"></span>
-                    </a>
+                    </a> --}}
                     <p class="caps" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Travel to the any
                         corner
                         of the world, without going around in circles</p>
@@ -49,8 +49,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="search-wrap-1 ftco-animate p-4">
-                        <form action="#" class="input-group" method="GET">
-                            <div class="row">
+                        <form action="#" class="search-property-1 input-group" method="GET">
+                            <div class="row w-100">
                                 <div class="col-lg align-items-end">
                                     <div class="form-group">
                                         <label for="#">Destination</label>
@@ -61,16 +61,16 @@
                                     </div>
                                 </div>
                                 {{-- <div class="col-lg align-items-end">
-								<div class="form-group">
+                                    <div class="form-group">
 									<label for="#">Check-in date</label>
 									<div class="form-field">
 										<div class="icon"><span class="ion-ios-calendar"></span></div>
 										<input type="text" class="form-control checkin_date"
 											placeholder="Check In Date">
 									</div>
-								</div>
-							</div>
-							<div class="col-lg align-items-end">
+								</div> 
+                                </div> --}}
+                                {{-- <div class="col-lg align-items-end">
 								<div class="form-group">
 									<label for="#">Check-out date</label>
 									<div class="form-field">
@@ -79,37 +79,37 @@
 											placeholder="Check Out Date">
 									</div>
 								</div>
-							</div>
-							<div class="col-lg align-items-end">
-								<div class="form-group">
-									<label for="#">Price Limit</label>
-									<div class="form-field">
-										<div class="select-wrap">
-											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
-												<option value="">$5,000</option>
-												<option value="">$10,000</option>
-												<option value="">$50,000</option>
-												<option value="">$100,000</option>
-												<option value="">$200,000</option>
-												<option value="">$300,000</option>
-												<option value="">$400,000</option>
-												<option value="">$500,000</option>
-												<option value="">$600,000</option>
-												<option value="">$700,000</option>
-												<option value="">$800,000</option>
-												<option value="">$900,000</option>
-												<option value="">$1,000,000</option>
-												<option value="">$2,000,000</option>
-											</select>
-										</div>
-									</div>
-								</div>
 							</div> --}}
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <label for="#">Price Limit</label>
+                                        <div class="form-field">
+                                            <div class="select-wrap">
+                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">$5,000</option>
+                                                    <option value="">$10,000</option>
+                                                    <option value="">$50,000</option>
+                                                    <option value="">$100,000</option>
+                                                    <option value="">$200,000</option>
+                                                    <option value="">$300,000</option>
+                                                    <option value="">$400,000</option>
+                                                    <option value="">$500,000</option>
+                                                    <option value="">$600,000</option>
+                                                    <option value="">$700,000</option>
+                                                    <option value="">$800,000</option>
+                                                    <option value="">$900,000</option>
+                                                    <option value="">$1,000,000</option>
+                                                    <option value="">$2,000,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-lg align-self-end">
                                     <div class="form-group">
                                         <div class="form-field">
-                                            <input type="submit" value="Search" class="form-control btn btn-primary">
+                                            <input type="submit" value="Search" class="form-control btn btn-primary ml-auto">
                                         </div>
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@
                         <div class="col-md-4 justify-content-center counter-wrap ftco-animate">
                             <div class="block-18 text-center mb-4">
                                 <div class="text">
-                                    <strong class="number" data-number="300">0</strong>
+                                    <strong class="number" data-number="{{ $tours_count }}">0</strong>
                                     <span>Successful Tours</span>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
                         <div class="col-md-4 justify-content-center counter-wrap ftco-animate">
                             <div class="block-18 text-center mb-4">
                                 <div class="text">
-                                    <strong class="number" data-number="24000">0</strong>
+                                    <strong class="number" data-number="{{ $users_count }}">0</strong>
                                     <span>Happy Tourist</span>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@
                         <div class="col-md-4 justify-content-center counter-wrap ftco-animate">
                             <div class="block-18 text-center mb-4">
                                 <div class="text">
-                                    <strong class="number" data-number="200">0</strong>
+                                    <strong class="number" data-number="{{ $places_count }}">0</strong>
                                     <span>Place Explored</span>
                                 </div>
                             </div>

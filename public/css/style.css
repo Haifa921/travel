@@ -8343,6 +8343,9 @@ h1, h2, h3, h4, h5,
   .search-property-1 .form-group .form-field {
     position: relative;
     display: block; }
+    .search-property-1 .form-group .form-control:focus {
+outline: 0;
+    }
   .search-property-1 .form-group .form-control {
     padding: 0;
     padding-left: 20px;
