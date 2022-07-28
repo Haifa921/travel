@@ -23,15 +23,55 @@ class TourSeeder extends Seeder
         $country1 = Country::create([
             'name' => 'Syria'
         ]);
+        $country1->media()->create([
+            'file_path' => 'countries/syria.jpg',
+            'file_name' => 'syria.jpg',
+            'file_size' => '500',
+            'file_type' => 'image/jpg',
+            'file_status' => true,
+            'file_sort' => 0,
+            'published' => true,
+        ]);
+        
         $country2 = Country::create([
             'name' => 'Australia'
         ]);
+        $country2->media()->create([
+            'file_path' => 'countries/australia.jpg',
+            'file_name' => 'australia.jpg',
+            'file_size' => '500',
+            'file_type' => 'image/jpg',
+            'file_status' => true,
+            'file_sort' => 0,
+            'published' => true,
+        ]);
+        
         $country3 = Country::create([
             'name' => 'Thailand'
         ]);
+        $country3->media()->create([
+            'file_path' => 'countries/thailand.jpg',
+            'file_name' => 'thailand.jpg',
+            'file_size' => '500',
+            'file_type' => 'image/jpg',
+            'file_status' => true,
+            'file_sort' => 0,
+            'published' => true,
+        ]);
+        
         $country4 = Country::create([
             'name' => 'Canada'
         ]);
+        $country4->media()->create([
+            'file_path' => 'countries/canada.jpg',
+            'file_name' => 'canada.jpg',
+            'file_size' => '500',
+            'file_type' => 'image/jpg',
+            'file_status' => true,
+            'file_sort' => 0,
+            'published' => true,
+        ]);
+        
         // categories seeding
 
         $category1 = Category::create([

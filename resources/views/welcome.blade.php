@@ -237,8 +237,8 @@
 		@foreach($destinations as $d)
 			<div class="col-md-3 ftco-animate">
 				<div class="project-destination">
-					<a href="#" class="img" style="background-image: url(images/place-3.jpg);">
-						<div class="text">
+					<a href="#" class="img" style="background-image: url(images/{{$d->media->file_path}});">
+						<div class="text" >
 							<h3>{{$d->name}}</h3>
 							<span>{{$d->tours_count}}</span>
 						</div>

@@ -19,10 +19,7 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Auth::routes(['verify' => true]);
 
-Route::get('/packages', [
-    'uses' => 'WelcomeController@packages',
-    'as' => 'packages'
-]);
+Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages');
 
 Route::get('/news', [
     'uses' => 'WelcomeController@blog',
