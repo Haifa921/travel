@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
 
-        .text:hover {
+        .text-gradient:hover {
             background: linear-gradient(to bottom, #00000061 0%, #000fff00 40%)
         }
     </style>
