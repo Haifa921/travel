@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\Tag;
 use App\Models\TouristPlace;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,14 @@ class WelcomeController extends Controller
             ->with('categories', Category::all())
             ->with('tags', []);
     }
-
+    public function packages()
+    {
+        return view('packages')
+            // ->with('destinations', Destinations::paginate(3))
+            ->with('places', TouristPlace::inRandomOrder()->take(4)->get())
+            ->with('categories', Category::all())
+            ->with('tags', Tag::all());
+    }
 
     public function about()
     {
