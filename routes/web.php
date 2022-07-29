@@ -20,9 +20,9 @@ Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages');
+Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages.index');
 
-Route::get('/news', [WelcomeController::class, 'blog'])->name('blog');
+Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
 Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/contact', [

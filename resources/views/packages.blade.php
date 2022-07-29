@@ -12,7 +12,7 @@
                                 Home <i class="ion-ios-arrow-forward"></i>
                             </a>
                         </span>
-                        <span>news/tips <i class="ion-ios-arrow-forward"></i></span>
+                        <span>Destinations<i class="ion-ios-arrow-forward"></i></span>
                     </p>
                 </div>
             </div>
