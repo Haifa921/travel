@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,6 @@ Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages.
 Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
 Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
-Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
 Route::get('/about', [WelcomeController::class, 'about'])->name('about');
-
+Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
