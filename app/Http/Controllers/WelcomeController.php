@@ -47,10 +47,10 @@ class WelcomeController extends Controller
             ->with('categories', Category::all())
             ->with('tags', Tag::all());
     }
- public function blog()
+    public function blog()
     {
         return view('blog')
-            ->with('blogs', Blog::paginate(2))
+            ->with('blogs', Blog::paginate(6))
             ->with('tags', Tag::all())
             ->with('categories', Category::all());
     }

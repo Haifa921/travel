@@ -18,7 +18,7 @@ class TourFactory extends Factory
             'schedule' => $this->faker->sentences(3,true),
             'description' => $this->faker->sentences(1,true),
             'seats' => $this->faker->numberBetween(13, 100),
-            'price' => $this->faker->randomFloat(50.0, 1900.0),
+            'price' => $this->faker->randomFloat(2,50.0, 1700.0),
             'takeoff_date' => $this->faker->dateTimeBetween('+0 days', '+1 month'),
             'duration' => $this->faker->numberBetween(15, 35),
             'published_at' => now(),

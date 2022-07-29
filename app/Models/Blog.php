@@ -18,4 +18,8 @@ class Blog extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+    public function media()
+    {
+        return $this->morphOne(Media::class, 'mediable');
+    }
 }
