@@ -8,8 +8,8 @@
                 <div class="col-md-9 ftco-animate pb-5 text-center">
                     <h1 class="mb-3 bread">Travel Tips &amp; Blog</h1>
                     <p class="breadcrumbs">
-                        <span class="mr-2"><a href="">Home <i class="ion-ios-arrow-forward"></i></a></span>
-                        <span>News/Tips <i class="ion-ios-arrow-forward"></i></span>
+                        <span class="mr-2"><a href="{{route('home')}}">Home <i class="ion-ios-arrow-forward"></i></a></span>
+                        <span><a href="{{route('blog')}}">News/Tips <i class="ion-ios-arrow-forward"></i></a></span>
                         <span>{{ $blog->title }} <i class="ion-ios-arrow-forward"></i></span>
                     </p>
                 </div>
