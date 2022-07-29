@@ -124,7 +124,8 @@
                             <div class="text p-4">
                                 <span class="price">${{ $t->price }}/person</span>
                                 <span class="days">{{ $t->duration }} Days Tour</span>
-                                <h3 style="font-size:medium"><a href="">
+                                <h3 style="font-size:medium">
+                                <a href="{{route('packages.show',$t->id)}}">
                                         {{ $t->name_with_place }}
                                     </a>
                                 </h3>
