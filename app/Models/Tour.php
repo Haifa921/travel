@@ -11,6 +11,12 @@ class Tour extends Model
 
     protected $guarded = [];
 
+
+    public function getNameWithPlaceAttribute($value)
+    {
+        return $this->name . $this->touristPlace->name;
+    }
+
     public function touristPlace()
     {
         return $this->belongsTo(TouristPlace::class);
@@ -20,7 +26,7 @@ class Tour extends Model
     {
         return $this->hasMany(Review::class);
     }
-    
+
     public function tourSubscriptions()
     {
         return $this->hasMany(TourSubscription::class);

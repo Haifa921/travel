@@ -15,16 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 Auth::routes(['verify' => true]);
 
 Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages');
 
-Route::get('/news', [
-    'uses' => 'WelcomeController@blog',
-    'as' => 'blog'
-]);
+Route::get('/news', [WelcomeController::class, 'blog'])->name('blog');
 
 Route::get('/contact', [
     'uses' => 'WelcomeController@contact',

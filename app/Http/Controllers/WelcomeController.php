@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Tag;
@@ -36,17 +37,23 @@ class WelcomeController extends Controller
             ->with('destinations', $destinations)
             ->with('places', $places)
             ->with('categories', Category::all())
-            ->with('tags', []);
+            ->with('tags', Tag::all());
     }
     public function packages()
     {
         return view('packages')
-            // ->with('destinations', Destinations::paginate(3))
-            ->with('places', TouristPlace::inRandomOrder()->take(4)->get())
+            ->with('tours', Tour::paginate(6))
+            ->with('places', TouristPlace::inRandomOrder()->withCount('tours')->take(4)->get())
             ->with('categories', Category::all())
             ->with('tags', Tag::all());
     }
-
+ public function blog()
+    {
+        return view('blog')
+            ->with('blogs', Blog::paginate(2))
+            ->with('tags', Tag::all())
+            ->with('categories', Category::all());
+    }
     public function about()
     {
         return view('about');

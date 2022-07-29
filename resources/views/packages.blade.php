@@ -1,63 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Safari</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .text:hover {
-            background: linear-gradient(to bottom, #00000061 0%, #000fff00 40%)
-        }
-    </style>
-
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="">Safari<span>Travel Agency</span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="" class="nav-link">Home</a></li>
-                    <li class="nav-item active"><a href="{{ route('packages') }}" class="nav-link">Destination</a></li>
-                    <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
-                    <li class="nav-item cta"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- END nav -->
-
+@extends('layouts.front')
+@section('page')
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/place-4.jpg');"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
@@ -70,7 +12,7 @@
                                 Home <i class="ion-ios-arrow-forward"></i>
                             </a>
                         </span>
-                        <span>Destinations <i class="ion-ios-arrow-forward"></i></span>
+                        <span>news/tips <i class="ion-ios-arrow-forward"></i></span>
                     </p>
                 </div>
             </div>
@@ -90,9 +32,9 @@
                         <div class="project-destination">
                             <a href="#" class="img"
                                 style="background-image: url('/images/{{ $p->media[0]->file_path }}');">
-                                <div class="text">
+                                <div class="text text-gradient">
                                     <h3>{{ $p->country->name }}, {{ $p->name }}</h3>
-                                    <span>8 Tours</span>
+                                    <span>{{ $p->tours_count }} Tours</span>
                                 </div>
                             </a>
                         </div>
@@ -169,25 +111,34 @@
                     <h2 class="mb-4">Tour Destination</h2>
                 </div>
             </div>
-            {{-- <div class="row">
-                @foreach ($destinations as $destination)
+            <div class="row">
+                @foreach ($tours as $t)
                     <div class="col-md-4 ftco-animate">
                         <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(images/destination-2.jpg);">
-                                <p>
-                                    {{ $destination->category->name }}
+                            <a href="#" class="img"
+                                style="background-image: url('images/{{ $t->touristPlace->media[0]->file_path }}');">
+                                <p class="p-2">
+                                    {{ $t->touristPlace->category->name }}
                                 </p>
                             </a>
                             <div class="text p-4">
-                                <span class="price">$300/person</span>
-                                <span class="days">10 Days Tour</span>
-                                <h3><a href="{{ route('desti.show', $destination->id) }}">
-                                        {{ $destination->title }}
-                                    </a></h3>
+                                <span class="price">${{ $t->price }}/person</span>
+                                <span class="days">{{ $t->duration }} Days Tour</span>
+                                <h3 style="font-size:medium"><a href="">
+                                        {{ $t->name_with_place }}
+                                    </a>
+                                </h3>
                                 <ul>
-                                    <li><span class="flaticon-shower"></span>2</li>
+                                    {{-- <li><span class="flaticon-shower"></span>2</li> --}}
                                     <li><span class="flaticon-king-size"></span>3</li>
-                                    <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
+                                    <li><span class="flaticon-location"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-2 w-2" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor" stroke-width="2" style="width:20px">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg></span>{{ $p->country->name }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -195,110 +146,8 @@
                 @endforeach
             </div>
 
-            {{ $destinations->links() }} --}}
+            {{ $tours->links() }}
 
         </div>
     </section>
-
-    <footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Safari</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
-                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">Categories</h2>
-                        @foreach ($categories as $category)
-                            <div class="col-6">
-                                <a href="#">
-                                    {{ $category->name }}
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Tags</h2>
-                        @foreach ($tags as $tag)
-                            <div class="col-6">
-                                <a href="#">
-                                    {{ $tag->name }}
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Have any Questions?</h2>
-                        <div class="block-23 mb-3">
-                            <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">Ole Sangale Road,
-                                        off
-                                        Langata Road, in Madaraka Estate, Nairobi, Kenya.</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span
-                                            class="text">+254712345678</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span
-                                            class="text">info@yourdomain.com</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script> All rights reserved
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                stroke-miterlimit="10" stroke="#F96D00" />
-        </svg></div>
-
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="js/google-map.js"></script>
-    <script src="js/main.js"></script>
-
-</body>
-
-</html>
+@endsection
