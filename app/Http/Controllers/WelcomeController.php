@@ -56,7 +56,8 @@ class WelcomeController extends Controller
     }
     public function about()
     {
-        return view('about');
+        return view('about')->with('tags', Tag::all())
+            ->with('categories', Category::all());
     }
 
 

@@ -25,11 +25,6 @@ Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages.
 Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
 Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
-Route::get('/contact', [
-    'uses' => 'WelcomeController@contact',
-    'as' => 'contact'
-]);
-Route::get('/about', [
-    'uses' => 'WelcomeController@about',
-    'as' => 'about'
-]);
+Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
+Route::get('/about', [WelcomeController::class, 'about'])->name('about');
+
