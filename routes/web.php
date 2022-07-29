@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ Auth::routes(['verify' => true]);
 Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages');
 
 Route::get('/news', [WelcomeController::class, 'blog'])->name('blog');
+Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/contact', [
     'uses' => 'WelcomeController@contact',

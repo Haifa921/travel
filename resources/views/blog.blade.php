@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('page')
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/destination-5.jpg');"
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/destination-5.jpg');"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
@@ -25,11 +25,9 @@
             </div>
             <div class="row">
                 @foreach ($blogs as $blog)
-                   
-
                     <div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
                         <div class="blog-entry  justify-content-end" style="width:22rem">
-                            <a href="" class="block-20"
+                            <a href="{{ route('blog.show', $blog->slug) }}" class="block-20"
                                 style="background-image:url(images/{{ $blog->media->file_path }})">
                             </a>
                             <div class="text mt-3 float-right d-block">
@@ -45,7 +43,7 @@
                                             class="mos">{{ \Carbon\Carbon::parse($blog->published_at)->format('M') }}</span>
                                     </div>
                                 </div>
-                                <h3 class="heading"><a href="#">{{ $blog->title }}</a>
+                                <h3 class="heading"><a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a>
                                 </h3>
                                 <p>{{ $blog->description }}</p>
                             </div>
