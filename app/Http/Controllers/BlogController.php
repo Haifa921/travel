@@ -55,7 +55,9 @@ class BlogController extends Controller
 
         return view('blogDetail')
             ->with('blog', ModelsBlog::where('slug', $slug)->first())
-            ->with('categories', ModelsCategory::all())
+            ->with('recent', ModelsBlog::whereNotNull('published_at')->orderBy('published_at','DESC')->take(3)->get())
+            ->with('categories', ModelsCategory::withCount('blogs')->has('blogs', '>' , 0)->take(5)->get())
+            ->with('tagcloud', Tag::withCount('blogs')->orderBy('blogs_count', 'desc')->take(8)->get())
             ->with('tags', Tag::all());
     }
 

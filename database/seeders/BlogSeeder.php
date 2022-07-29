@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
@@ -41,6 +42,47 @@ class BlogSeeder extends Seeder
             'name' => 'Food',
             'slug' => 'Food',
         ]);
+        // //////
+        $tag1 = Tag::create([
+            'name' => 'Travel',
+            'slug' => 'Travel'
+        ]);
+
+        $tag2 = Tag::create([
+            'name' => 'Cruise',
+            'slug' => 'Cruise'
+        ]);
+
+        $tag3 = Tag::create([
+            'name' => 'Beach',
+            'slug' => 'Beach'
+        ]);
+
+        $tag4 = Tag::create([
+            'name' => 'Adventure',
+            'slug' => 'Adventure'
+        ]);
+
+        $tag5 = Tag::create([
+            'name' => 'Sunset',
+            'slug' => 'Sunset'
+        ]);
+
+        $tag6 = Tag::create([
+            'name' => 'Travelphotography',
+            'slug' => 'Travelphotography'
+        ]);
+
+        $tag7 = Tag::create([
+            'name' => 'Nature',
+            'slug' => 'Nature'
+        ]);
+
+        $tag8 = Tag::create([
+            'name' => 'Wanderlust',
+            'slug' => 'Wanderlust'
+        ]);
+        // //////////
 
         $blog1 = Blog::create([
             'title' => 'Camera Backpacks',
@@ -143,5 +185,17 @@ class BlogSeeder extends Seeder
             'file_sort' => 0,
             'published' => true,
         ]);
+
+        $blog1->tags()->attach([$tag1->id, $tag2->id]);
+        $blog2->tags()->attach([$tag4->id, $tag3->id]);
+        $blog3->tags()->attach([$tag1->id, $tag4->id]);
+        $blog1->tags()->attach([$tag3->id, $tag2->id]);
+
+        $blog1->tags()->attach([$tag8->id, $tag1->id]);
+        $blog5->tags()->attach([$tag7->id, $tag3->id]);
+        $blog6->tags()->attach([$tag6->id, $tag8->id]);
+        $blog2->tags()->attach([$tag5->id, $tag6->id]);
+        $blog4->tags()->attach([$tag4->id, $tag8->id]);
+        $blog5->tags()->attach([$tag7->id, $tag4->id]);
     }
 }
