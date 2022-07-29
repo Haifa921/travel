@@ -8,9 +8,12 @@ use App\Destinations;
 use Illuminate\Http\Request;
 use App\Http\Requests\Destinations\CreateDestinationsRequest;
 use App\Http\Requests\Destinations\UpdateDestinationsRequest;
+use App\Models\Category as ModelsCategory;
+use App\Models\Tag as ModelsTag;
+use App\Models\Tour;
 use PhpParser\Node\Stmt\Catch_;
 
-class DestinationsController extends Controller
+class ToursController extends Controller
 {
 
     public function __construct()
@@ -46,20 +49,20 @@ class DestinationsController extends Controller
     public function store(CreateDestinationsRequest $request)
     {
         //upload image
-        $image = $request->image->store('destinations');
-        //create post
-        $destination = Destinations::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'content' => $request->content,
-            'image' => $image,
-            'published_at' => $request->published_at,
-            'category_id'=>$request->category
-        ]);
+        // $image = $request->image->store('destinations');
+        // //create post
+        // $destination = Destinations::create([
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'content' => $request->content,
+        //     'image' => $image,
+        //     'published_at' => $request->published_at,
+        //     'category_id'=>$request->category
+        // ]);
 
-        if($request->tags){
-            $destination->tags()->attach($request->tags);
-        }
+        // if($request->tags){
+        //     $destination->tags()->attach($request->tags);
+        // }
 
 
 
@@ -77,9 +80,13 @@ class DestinationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tour $tour)
     {
-        //
+$tour->load(['touristPlace']);
+        return view('packageDetail')
+            ->with('tour', $tour)
+            ->with('tags', ModelsTag::all())
+            ->with('categories', ModelsCategory::all());
     }
 
     /**
@@ -114,7 +121,7 @@ class DestinationsController extends Controller
 
             $data['image'] = $image;
         }
-        if ($request->tags){
+        if ($request->tags) {
             $destinations->tags()->sync($request->tags);
         }
 
@@ -142,7 +149,7 @@ class DestinationsController extends Controller
         if ($destinations->trashed()) {
             $destinations->deleteImage();
 
-            $destinations->forceDelete();   
+            $destinations->forceDelete();
         } else {
             $destinations->delete();
         }
@@ -172,6 +179,5 @@ class DestinationsController extends Controller
         session()->flash('success', 'Destination restored successfully.');
 
         return redirect()->back();
-
     }
 }

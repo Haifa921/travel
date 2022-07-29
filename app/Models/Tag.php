@@ -16,6 +16,6 @@ class Tag extends Model
     
     public function tours()
     {
-        return $this->morphedByMany(Tours::class, 'taggable');
+        return $this->morphedByMany(Tour::class, 'taggable');
     }
 }

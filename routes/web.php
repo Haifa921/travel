@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\ToursController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Auth::routes(['verify' => true]);
 
 Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages.index');
+Route::get('/packages/{tour}', [ToursController::class, 'show'])->name('packages.show');
 
 Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
 Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');

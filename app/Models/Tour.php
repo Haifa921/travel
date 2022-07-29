@@ -26,6 +26,10 @@ class Tour extends Model
     {
         return $this->hasMany(Review::class);
     }
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
 
     public function tourSubscriptions()
     {
