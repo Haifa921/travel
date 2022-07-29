@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ToursController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
@@ -31,3 +32,28 @@ Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/about', [WelcomeController::class, 'about'])->name('about');
 Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('users/profile', 'UsersController@edit')->name('users.edit-profile');
+
+    Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
+
+    Route::get('users', 'UsersController@index')->name('users.index');
+
+    Route::post('users|{user}|make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
+    
+    Route::get('/dashboard', [DashboardController::class,'index'])->name('home');
+
+    Route::resource('categories', "CategoriesController");
+
+    Route::resource('destinations', "DestinationsController");
+
+    Route::resource('tags', "TagsController");
+
+    Route::resource('blog', "BlogController");
+
+    Route::get('trashed-destinations', 'DestinationsController@trashed')->name('trashed-destinations.index');
+
+    Route::put('restore-destinations/{destinations}', 'DestinationsController@restore')->name('restore-destinations');
+});

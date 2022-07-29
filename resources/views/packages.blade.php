@@ -115,7 +115,7 @@
                 @foreach ($tours as $t)
                     <div class="col-md-4 ftco-animate">
                         <div class="project-wrap">
-                            <a href="{{route('packages.show',$t->id)}}" class="img"
+                            <a href="{{ route('packages.show', $t->id) }}" class="img"
                                 style="background-image: url('images/{{ $t->touristPlace->media[0]->file_path }}');">
                                 <p class="p-2">
                                     {{ $t->touristPlace->category->name }}
@@ -125,16 +125,22 @@
                                 <span class="price">${{ $t->price }}/person</span>
                                 <span class="days">{{ $t->duration }} Days Tour</span>
                                 <h3 style="font-size:medium">
-                                <a href="{{route('packages.show',$t->id)}}">
+                                    <a href="{{ route('packages.show', $t->id) }}">
                                         {{ $t->name_with_place }}
                                     </a>
                                 </h3>
                                 <ul>
                                     {{-- <li><span class="flaticon-shower"></span>2</li> --}}
-                                    <li><span class="flaticon-king-size"></span>3</li>
-                                    <li><span ><svg xmlns="http://www.w3.org/2000/svg"
-                                                class="h-2 w-2" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" stroke-width="2" style="width:20px">
+                                    <li><span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                                            </svg>
+                                    </span>available</li>
+                                    <li><span><svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                                                style="width:20px">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                 <path stroke-linecap="round" stroke-linejoin="round"
