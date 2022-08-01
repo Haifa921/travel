@@ -18,7 +18,7 @@
                     <p class="caps" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Travel to the any
                         corner
                         of the world, without going around in circles</p>
-                    <h1 data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Make Your Tour Amazing With Us</h1>
+                    <h1 data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{trans('blog.make_your_tours')}} </h1>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                             <div class="row w-100">
                                 <div class="col-lg align-items-end">
                                     <div class="form-group">
-                                        <label for="#">Destination</label>
+                                        <label for="#">{{trans('blog.Destination')}}</label>
                                         <div class="form-field">
                                             <div class="icon"><span class="ion-ios-search"></span></div>
                                             <input type="text" class="form-control" placeholder="Search place">
@@ -62,7 +62,7 @@
 							</div> --}}
                                 <div class="col-lg align-items-end">
                                     <div class="form-group">
-                                        <label for="#">Price Limit</label>
+                                        <label for="#">{{trans('blog.Price_Limit')}}</label>
                                         <div class="form-field">
                                             <div class="select-wrap">
                                                 <div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -105,7 +105,7 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate">
-                    <h2 class="mb-4">It's time to start your adventure</h2>
+                    <h2 class="mb-4">{{trans('blog.It_time_to_start_your_adventure')}}</h2>
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
                         paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
@@ -120,7 +120,7 @@
                             <div class="media block-6 services d-block">
                                 <div class="icon"><span class="flaticon-paragliding"></span></div>
                                 <div class="media-body">
-                                    <h3 class="heading mb-3">Activities</h3>
+                                    <h3 class="heading mb-3">{{trans('blog.Activities')}}</h3>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary</p>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                             <div class="media block-6 services d-block">
                                 <div class="icon"><span class="flaticon-route"></span></div>
                                 <div class="media-body">
-                                    <h3 class="heading mb-3">Travel Arrangements</h3>
+                                    <h3 class="heading mb-3">{{trans('blog.Travel_Arrangements')}} </h3>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary</p>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
                             <div class="media block-6 services d-block">
                                 <div class="icon"><span class="flaticon-tour-guide"></span></div>
                                 <div class="media-body">
-                                    <h3 class="heading mb-3">Private Guide</h3>
+                                    <h3 class="heading mb-3">{{trans('blog.Private_Guide')}} </h3>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary</p>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                             <div class="media block-6 services d-block">
                                 <div class="icon"><span class="flaticon-map"></span></div>
                                 <div class="media-body">
-                                    <h3 class="heading mb-3">Location Manager</h3>
+                                    <h3 class="heading mb-3">{{trans('blog.Location_Manager')}} </h3>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary</p>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
         <div class="container">
             <div class="row justify-content-center pb-4">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">Popular Destinations</h2>
+                    <h2 class="mb-4">{{trans('blog.Popular_Destinations')}} </h2>
                 </div>
             </div>
             <div class="row">
@@ -235,7 +235,7 @@
         <div class="container">
             <div class="row justify-content-center pb-4">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">Tourist Places</h2>
+                    <h2 class="mb-4">{{trans('blog.Tourist_Places')}} </h2>
                 </div>
             </div>
             <div class="row">
@@ -444,4 +444,83 @@
 	</div>
 </section> --}}
 
+    <footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Safari</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+                            live the blind texts.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Categories</h2>
+                        @foreach ($categories as $category)
+                            <div class="col-6">
+                                <a href="#">
+                                    {{ $category->name }}
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Tags</h2>
+                        @foreach ($tags as $tag)
+                            <div class="col-6">
+                                <a href="#">
+                                    {{ $tag->name }}
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have any Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">Ole Sangale Road, off
+                                        Langata Road, in Madaraka Estate, Nairobi, Kenya.</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span
+                                            class="text">+254712345678</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span
+                                            class="text">info@yourdomain.com</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> All rights reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke-miterlimit="10" stroke="#F96D00" />
+        </svg></div>
 @endsection
