@@ -20,26 +20,26 @@
             @endif
 
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">{{trans('blog.Title')}}</label>
                 <input type="text" class="form-control" name="title" id="title"
                     value="{{isset($destinations) ? $destinations->title: ''}}">
             </div>
 
             <div class="form-group">
-                <label for="Description">Description</label>
+                <label for="Description">{{trans('blog.Description')}}</label>
                 <textarea name="description" class="form-control" name="description" id="description" cols="5"
                     rows="5">{{ isset($destination) ? $destination->description : ''}}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="content">Content</label>
+                <label for="content">{{trans('blog.Content')}}</label>
                 <input id="content" type="hidden" name="content"
                     value="{{isset($destination) ?$destination->content: ''}}">
                 <trix-editor input="content"></trix-editor>
             </div>
 
             <div class="form-group">
-                <label for="published_at">Published At</label>
+                <label for="published_at">{{trans('blog.Published_At')}} </label>
                 <input type="text" class="form-control" name="published_at" id="published_at"
                     value="{{isset($destination) ?$destination->published_at: ''}}"">
             </div>
@@ -50,12 +50,12 @@
             @endif
 
             <div class="form-group">
-                <label for="image">Image</label>
+                <label for="image">{{trans('blog.Image')}}</label>
                 <input type="file" class="form-control" name="image" id="image">
             </div>
 
             <div class="form-group">
-                <label for="category">Category</label>
+                <label for="category">{{trans('blog.Category')}}</label>
                 <select name="category" id="category" class="form-control">
                     @foreach ($categories as $category)
                     <option value="{{$category->id}}" @if (isset($destinations)) @if ($category->
@@ -72,7 +72,7 @@
 
             @if ($tags->count()>0)
             <div class="form-group">
-                <label for="tags">Tags</label>
+                <label for="tags">{{trans('blog.Tags')}}</label>
 
                 <select name="tags" id="tags" class="form-control tags-selector" multiple>
                     @foreach ($tags as $tag )

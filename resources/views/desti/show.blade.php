@@ -13,11 +13,11 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="" {{route('about')}}" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="" {{route('packages')}}" class="nav-link">Destination</a></li>
-                <li class="nav-item active"><a href="" {{route('blog')}}" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="" {{route('contact')}}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="" class="nav-link">{{trans('blog.Home')}}</a></li>
+                <li class="nav-item"><a href="" {{route('about')}}" class="nav-link">{{trans('blog.About')}}</a></li>
+                <li class="nav-item"><a href="" {{route('packages')}}" class="nav-link">{{trans('blog.Destination')}}</a></li>
+                <li class="nav-item active"><a href="" {{route('blog')}}" class="nav-link">{{trans('blog.Blog')}}</a></li>
+                <li class="nav-item"><a href="" {{route('contact')}}" class="nav-link">{{trans('blog.Contact')}}</a></li>
 
 
             </ul>
@@ -160,4 +160,4 @@
         <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
         <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
             stroke="#F96D00" /></svg></div>
-@endsection
+@endsections
