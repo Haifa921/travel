@@ -15,4 +15,9 @@ class Category extends Model
     {
         return $this->hasMany(Blog::class);
     }
+    public function touristPlaces()
+    {
+        return $this->hasMany(TouristPlace::class);
+    }
+
 }

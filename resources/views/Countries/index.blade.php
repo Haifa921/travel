@@ -4,33 +4,37 @@
 @section('content')
 
 <div class="d-flex justify-content-end mb-2">
-   <a href="{{route('categories.create')}}" class="btn btn-success ">Add Category</a>
+   <a href="{{route('categories.create')}}" class="btn btn-success ">Add Country</a>
 </div>
 <div class="card card-default">
-   <div class="card-header">Categories</div>
+   <div class="card-header">Countries</div>
    <div class="card-body">
-      @if ($categories->count()>0)
+      @if ($countries->count()>0)
       <table class="table">
          <thead>
             <th>Name</th>
+            <th>Tourist places Count</th>
             <th>Tours Count</th>
             <th></th>
          </thead>
 
          <tbody>
-            @foreach ($categories as $category )
+            @foreach ($countries as $country )
             <tr>
                <td>
-                  {{$category->name}}
+                  {{$country->name}}
                </td>
                <td>
-                  {{$category->touristPlaces()->count() }}
+                  {{$country->touristPlaces()->count() }}
                </td>
                <td>
-                  <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">
+                  {{$country->tours()->count() }}
+               </td>
+               <td>
+                  <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-info btn-sm">
                      Edit
                   </a>
-                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{$category->id}})">Delete</button>
+                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{$country->id}})">Delete</button>
                </td>
             </tr>
             @endforeach
