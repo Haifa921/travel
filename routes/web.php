@@ -25,7 +25,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale()
+    ], function () {
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 Auth::routes(['verify' => true]);
@@ -39,7 +42,6 @@ Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/about', [WelcomeController::class, 'about'])->name('about');
 Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
-
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('users/profile', 'UsersController@edit')->name('users.edit-profile');
@@ -66,4 +68,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('trashed-destinations', 'DestinationsController@trashed')->name('trashed-destinations.index');
 
     Route::put('restore-destinations/{destinations}', 'DestinationsController@restore')->name('restore-destinations');
+});
 });

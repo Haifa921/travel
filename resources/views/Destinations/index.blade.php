@@ -14,10 +14,10 @@
         @if ($destinations->count()>0)
         <table class="table">
             <thead>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Pricing</th>
+                <th>{{trans('blog.Image')}}</th>
+                <th>{{trans('blog.Title')}}</th>
+                <th>{{trans('blog.Category')}}</th>
+                <th>{{trans('blog.Pricing')}}</th>
                 <th></th>
             </thead>
             <tbody>
@@ -67,7 +67,11 @@
             </tbody>
         </table>
         @else
+<<<<<<< HEAD
         <h3 class="text-center">No Tours Yet</h3>
+=======
+        <h3 class="text-center">{{trans('blog.No_Destinations_Yet')}}</h3>
+>>>>>>> 0cf762374ad8948718addd760b9a3084b2e416d6
         @endif
 
 
