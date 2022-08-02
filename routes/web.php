@@ -1,9 +1,16 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\RestaurantsController;
+use App\Http\Controllers\TagsController;
+use App\Http\Controllers\TouristPlacesController;
 use App\Http\Controllers\ToursController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,19 +49,22 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
 
-    Route::get('users', 'UsersController@index')->name('users.index');
+    Route::get('users', [UsersController::class,'index'])->name('users.index');
 
     Route::post('users|{user}|make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
     
     Route::get('/dashboard', [DashboardController::class,'index'])->name('home');
 
-    Route::resource('categories', "CategoriesController");
+    Route::resource('categories', CategoriesController::class);
+    Route::resource('countries', CountriesController::class);
+    Route::resource('restaurants', RestaurantsController::class);
+    Route::resource('places', TouristPlacesController::class);
 
-    Route::resource('destinations', "DestinationsController");
+    Route::resource('tours', DestinationsController::class);
 
-    Route::resource('tags', "TagsController");
+    Route::resource('tags', TagsController::class);
 
-    Route::resource('blog', "BlogController");
+    Route::resource('blog', BlogController::class);
 
     Route::get('trashed-destinations', 'DestinationsController@trashed')->name('trashed-destinations.index');
 

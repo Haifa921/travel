@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Categories\CreateCategoryRequest;
 use App\Http\Requests\Categories\UpdateCategoriesRequest;
-
+use App\Models\Category;
 
 class CategoriesController extends Controller
 {

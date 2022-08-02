@@ -23,7 +23,6 @@
         .btn-info {
             color: #ffffff;
         }
-
     </style>
 
     @yield('css')
@@ -64,7 +63,7 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->fname }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -120,7 +119,16 @@
                                 @endif
 
                                 <li class="list-group-item">
-                                    <a href="{{ route('destinations.index') }}">Destinations</a>
+                                    <a href="{{ route('tours.index') }}">Tours / Destinations</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{ route('restaurants.index') }}">Restaurants</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{ route('countries.index') }}">Countries</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{ route('places.index') }}">Tourist Places</a>
                                 </li>
                                 <li class="list-group-item">
                                     <a href="{{ route('categories.index') }}">Categories</a>

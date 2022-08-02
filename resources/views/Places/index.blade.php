@@ -11,36 +11,36 @@
     <div class="card-header">Tours</div>
 
     <div class="card-body">
-        @if ($destinations->count()>0)
+        @if ($places->count()>0)
         <table class="table">
             <thead>
-                <th>{{trans('blog.Image')}}</th>
-                <th>{{trans('blog.Title')}}</th>
-                <th>{{trans('blog.Category')}}</th>
-                <th>{{trans('blog.Pricing')}}</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Country</th>
                 <th></th>
             </thead>
             <tbody>
-                @foreach ($destinations as $destination)
+                @foreach ($places as $place)
                 <tr>
                     <td>
-                        <img src="images/{{$destination->touristPlace->media[0]->file_path}}" width="120px" height="60px"
+                        <img src="images/{{$place->media[0]->file_path}}" width="120px" height="60px"
                             class="img-thumbnail" alt="responsive image">
                     </td>
                     <td>
-                        {{ $destination->name_with_place }}
+                        {{ $place->name }}
                     </td>
                     <td>
-                        <a href="{{route('categories.edit', $destination->touristPlace->category->id)}}">
-                            {{$destination->touristPlace->category->name}}
+                        <a href="{{route('places.edit', $place->category->id)}}">
+                            {{$place->category->name}}
                         </a>
                     </td>
                     <td>
-                        SYP {{ $destination->price }}
+                       {{ $place->country->name }}
                     </td>
-                    @if ($destination->trashed())
+                    @if ($place->trashed())
                     <td>
-                        <form action="{{route('restore-tours', $destination->id)}}" method="POST">
+                        <form action="{{route('restore-tours', $place->id)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <button type="submit" class="btn btn-info btn-sm">Restore</button>
@@ -48,17 +48,17 @@
                     </td>
                     @else
                     <td>
-                        <a href="{{route('tours.edit', $destination->id) }}"
+                        <a href="{{route('tours.edit', $place->id) }}"
                             class="btn btn-info btn-sm">Edit</a>
                     </td>
                     @endif
 
                     <td>
-                        <form action="{{route('tours.destroy', $destination->id)}}" method="POST">
+                        <form action="{{route('tours.destroy', $place->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">
-                                {{$destination->trashed()? 'Delete':'Trash'}}
+                                {{$place->trashed()? 'Delete':'Trash'}}
                             </button>
                         </form>
                     </td>
@@ -67,11 +67,7 @@
             </tbody>
         </table>
         @else
-<<<<<<< HEAD
         <h3 class="text-center">No Tours Yet</h3>
-=======
-        <h3 class="text-center">{{trans('blog.No_Destinations_Yet')}}</h3>
->>>>>>> 0cf762374ad8948718addd760b9a3084b2e416d6
         @endif
 
 
