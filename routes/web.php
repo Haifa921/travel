@@ -31,7 +31,8 @@ Route::get('/packages/{tour}', [ToursController::class, 'show'])->name('packages
 
 Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
 Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
-
+Route::get('/news', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/news/create', [BlogController::class, 'create'])->name('blog.create');
 Route::get('/about', [WelcomeController::class, 'about'])->name('about');
 Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
