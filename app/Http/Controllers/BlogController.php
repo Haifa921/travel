@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Blog;
-use App\Category;
+use App\Models\Blog;
+use App\Models\Category;
 use App\Http\Requests\Blo\CreateBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Models\Blog as ModelsBlog;
@@ -37,7 +37,8 @@ class BlogController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
-            'image' => $image,
+            'image' => $request->image,
+            'slug' =>   str_slug($request->title),
             'published_at' => $request->published_at,
             'category_id' => $request->category
         ]);
