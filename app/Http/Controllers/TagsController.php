@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Tag;
+use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Requests\Tags\CreateTagRequest;
 use App\Http\Requests\Tags\UpdateTagsRequest;
