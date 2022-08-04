@@ -291,5 +291,7 @@ class TourSeeder extends Seeder
                 ['name' => 'the dream of '],
             ))
             ->create();
+
+            
     }
 }

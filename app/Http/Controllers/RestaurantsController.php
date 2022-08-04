@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class RestaurantsController extends Controller
@@ -13,7 +15,8 @@ class RestaurantsController extends Controller
      */
     public function index()
     {
-        //
+        return view('restaurants.index')->with('restaurants', Restaurant::all());
+        
     }
 
     /**
@@ -23,7 +26,9 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurants.create')
+        ->with('countries',Country::all());
+        
     }
 
     /**
@@ -34,7 +39,12 @@ class RestaurantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $c =  Restaurant::create($request->input());
+
+        session()->flash('success', 'restaurant created successfully.');
+
+        return redirect(route('restaurants.index'));
     }
 
     /**
@@ -56,7 +66,8 @@ class RestaurantsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $restaurant->load('media');
+        return view('restaurants.create')->with('restaurant', $restaurant);
     }
 
     /**
@@ -68,7 +79,28 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $restaurant->update([
+            'name' => $request->name
+        ]);
+        if ($request->hasFile('image')) {
+            //upload and delete
+            // dd('');
+            $image = $request->file('image')->store('restaurants','public');
+            $restaurant->media()->delete();
+            $restaurant->media()->create([
+                'file_path' => '/storage/'.$image,
+                'file_name' => $request->file('image')->getClientOriginalName(),
+                'file_size' => '500',
+                'file_type' => 'image/jpg',
+                'file_status' => true,
+                'file_sort' => 0,
+                'published' => true,
+            ]);
+        }
+        dd($restaurant->media->file_path);
+        session()->flash('success', 'restaurant updated successfully.');
+
+        return redirect(route('restaurants.index'));
     }
 
     /**
@@ -79,6 +111,16 @@ class RestaurantsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($restaurant->tours != null && $restaurant->tours->count() > 0) {
+            session()->flash('error', 'Category cannot be deleted as it is linked to a tour');
+
+            return redirect()->back();
+        }
+
+        $restaurant->delete();
+
+        session()->flash('success', 'restaurant Deleted Successfully.');
+
+        return redirect(route('restaurants.index'));
     }
 }
