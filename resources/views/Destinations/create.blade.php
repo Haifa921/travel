@@ -3,12 +3,12 @@
 @section('content')
     <div class="card card-default">
         <div class="card-header">
-            {{ isset($destinations) ? 'Edit Tour' : 'Create Tour' }}
+            {{ isset($destination) ? 'Edit Tour' : 'Create Tour' }}
         </div>
 
         <div class="card-body">
             @include('partials.errors')
-            <form action="{{ isset($destination) ? route('tours.update', $destinations->id) : route('tours.store') }}"
+            <form action="{{ isset($destination) ? route('tours.update', $destination->id) : route('tours.store') }}"
                 method="POST" enctype="multipart/form-data">
                 @csrf
 
@@ -21,7 +21,7 @@
                     <select name="tourist_place_id" id="category" class="form-control">
                         @foreach ($touristPlace as $place)
                             <option value="{{ $place->id }}"
-                                @if (isset($destinations)) @if ($place->id === $destination->category_id)
+                                @if (isset($destination)) @if ($place->id === $destination->category_id)
                         selected @endif
                                 @endif
                                 >
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label for="name">{{ trans('blog.name') }}</label>
                     <input type="text" class="form-control" name="name" id="name"
-                        value="{{ isset($destinations) ? $destinations->name : '' }}">
+                        value="{{ isset($destination) ? $destination->name : '' }}">
                 </div>
 
                 <div class="form-group">
@@ -78,16 +78,7 @@
                     <input type="number" name="duration" class="form-control" name="duration" id="duration"
                         value="{{ isset($destination) ? $destination->duration : '' }}" />
                 </div>
-                @if (isset($destination))
-                    <div class=" form-group">
-                        <img src="{{ asset($destination->image) }}" alt="" style="width: 100%">
-                    </div>
-                @endif
 
-                <div class="form-group">
-                    <label for="image">{{ trans('blog.Image') }}</label>
-                    <input type="file" class="form-control" name="image" id="image">
-                </div>
                 @if ($tags->count() > 0)
                     <div class="form-group">
                         <label for="tags">{{ trans('blog.Tags') }}</label>
