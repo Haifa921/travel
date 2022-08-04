@@ -22,7 +22,7 @@
                         @foreach ($destinations as $destination)
                             <tr>
                                 <td>
-                                    <img src="images/{{ $destination->touristPlace->media[0]->file_path }}" width="120px"
+                                    <img src="{{ $destination->touristPlace->media[0]->file_path }}" width="120px"
                                         height="60px" class="img-thumbnail" alt="responsive image">
                                 </td>
                                 <td>
