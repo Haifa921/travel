@@ -6,7 +6,7 @@
 
 <div class="card card-default">
    <div class="card-header">
-      {{isset($category)? 'Edit Category': 'Create Category'}}
+      {{isset($category)? 'Edit country': 'Create country'}}
    </div>
    <div class="card-body">
       @include('partials.errors')
@@ -24,7 +24,7 @@
 
          <div class="form-group">
             <button class="btn btn-success">
-               {{isset($category) ? 'Update Category' : 'Add Category'}}
+               {{isset($category) ? 'Update country' : 'Add country'}}
             </button>
          </div>
       </form>

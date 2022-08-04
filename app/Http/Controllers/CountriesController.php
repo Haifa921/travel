@@ -14,7 +14,7 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        return view('countries.index')->with('countries', Country::all());
+        return view('Countries.index')->with('countries', Country::all());
         
     }
 
@@ -25,7 +25,7 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('Countries.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class CountriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Country::create([
+            'name' =>$request ->name
+        ]);
+
+
+        session()->flash('success', 'Country created successfully.');
+
+        return redirect(route('Countries.index'));
     }
 
     /**
@@ -58,7 +65,7 @@ class CountriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('Countries.create')->with('category', $category);
     }
 
     /**

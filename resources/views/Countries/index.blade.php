@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="d-flex justify-content-end mb-2">
-   <a href="{{route('categories.create')}}" class="btn btn-success ">Add Country</a>
+   <a href="{{route('countries.create')}}" class="btn btn-success ">Add Country</a>
 </div>
 <div class="card card-default">
    <div class="card-header">Countries</div>
