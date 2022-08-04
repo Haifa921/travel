@@ -3,45 +3,48 @@
 @section('content')
     <div class="card card-default">
         <div class="card-header">
-            {{ isset($destinations) ? 'Edit Tourist Place' : 'Create Tourist Place' }}
+            {{ isset($place) ? 'Edit Tourist Place' : 'Create Tourist Place' }}
         </div>
 
         <div class="card-body">
             @include('partials.errors')
-            <form action="{{ isset($destination) ? route('places.update', $destinations->id) : route('places.store') }}"
+            <form action="{{ isset($place) ? route('places.update', $place->id) : route('places.store') }}"
                 method="POST" enctype="multipart/form-data">
                 @csrf
 
-                @if (isset($destination))
+                @if (isset($place))
                     @method('PUT')
                 @endif
 
                 <div class="form-group">
                     <label for="name">name</label>
                     <input type="text" class="form-control" name="name" id="name"
-                        value="{{ isset($destinations) ? $destinations->name : '' }}">
+                        value="{{ isset($place) ? $place->name : '' }}">
                 </div>
 
                 <div class="form-group">
                     <label for="Description">Description</label>
-                    <textarea name="description" class="form-control" name="description" id="description" cols="5" rows="5">{{ isset($destination) ? $destination->description : '' }}</textarea>
+                    <textarea name="description" class="form-control" name="description" id="description" cols="5" rows="5">{{ isset($place) ? $place->description : '' }}</textarea>
                 </div>
 
                 {{-- <div class="form-group">
                     <label for="content">Content</label>
                     <input id="content" type="hidden" name="content"
-                        value="{{ isset($destination) ? $destination->content : '' }}">
+                        value="{{ isset($place) ? $place->content : '' }}">
                     <trix-editor input="content"></trix-editor>
                 </div> --}}
 
                 {{-- <div class="form-group">
                     <label for="published_at">Published At</label>
                     <input type="text" class="form-control" name="published_at" id="published_at"
-                        value="{{ isset($destination) ? $destination->published_at : '' }}"">
+                        value="{{ isset($place) ? $place->published_at : '' }}"">
                 </div> --}}
-                @if (isset($destination))
-                    <div class=" form-group">
-                        <img src="{{ asset($destination->image) }}" alt="" style="width: 100%">
+                @if (isset($place))
+                    <h4>Existed Images</h4>
+                    <div class=" form-group row">
+                    @foreach ($place->media as $p)
+                        <img class="col" src="{{ asset($p->file_path) }}" alt="" style="width: 50 %">
+                    @endforeach
                     </div>
                 @endif
 
@@ -55,7 +58,7 @@
                     <select name="country_id" id="country" class="form-control">
                         @foreach ($countries as $country)
                             <option value="{{ $country->id }}"
-                                @if (isset($destinations)) @if ($country->id === $country->country_id)
+                                @if (isset($place)) @if ($country->id === $country->country_id)
                         selected @endif
                                 @endif
                                 >
@@ -69,7 +72,7 @@
                     <select name="category_id" id="category" class="form-control">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                @if (isset($destinations)) @if ($category->id === $category->category_id)
+                                @if (isset($place)) @if ($category->id === $category->category_id)
                         selected @endif
                                 @endif
                                 >
@@ -81,7 +84,7 @@
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">
-                        {{ isset($destination) ? 'Update Destination' : 'Create Destination' }}
+                        {{ isset($place) ? 'Update Place' : 'Create Place' }}
                     </button>
                 </div>
 
