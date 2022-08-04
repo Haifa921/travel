@@ -138,7 +138,7 @@ class DestinationsController extends Controller
      */
     public function destroy($id)
     {
-        $destinations = Destinations::withTrashed()->where('id', $id)->firstOrFail();
+        $destinations = Tour::withTrashed()->where('id', $id)->firstOrFail();
 
 
         if ($destinations->trashed()) {
@@ -149,9 +149,9 @@ class DestinationsController extends Controller
             $destinations->delete();
         }
 
-        session()->flash('success', 'Destination deleted successfully');
+        session()->flash('success', 'Tour deleted successfully');
 
-        return redirect(route('destinations.index'));
+        return redirect(route('tours.index'));
     }
 
     /**
@@ -161,17 +161,17 @@ class DestinationsController extends Controller
 
     public function trashed()
     {
-        $trashed = Destinations::onlyTrashed()->get();
+        $trashed = Tour::onlyTrashed()->get();
 
         return view('destinations.index')->withdestinations($trashed);
     }
 
     public function restore($id)
     {
-        $destinations = Destinations::withTrashed()->where('id', $id)->firstOrFail();
+        $destinations = Tour::withTrashed()->where('id', $id)->firstOrFail();
         $destinations->restore();
 
-        session()->flash('success', 'Destination restored successfully.');
+        session()->flash('success', 'Tour restored successfully.');
 
         return redirect()->back();
     }
