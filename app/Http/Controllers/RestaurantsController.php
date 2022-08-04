@@ -16,7 +16,6 @@ class RestaurantsController extends Controller
     public function index()
     {
         return view('restaurants.index')->with('restaurants', Restaurant::all());
-        
     }
 
     /**
@@ -27,8 +26,7 @@ class RestaurantsController extends Controller
     public function create()
     {
         return view('restaurants.create')
-        ->with('countries',Country::all());
-        
+            ->with('countries', Country::all());
     }
 
     /**
@@ -64,10 +62,11 @@ class RestaurantsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Restaurant $restaurant)
     {
-        $restaurant->load('media');
-        return view('restaurants.create')->with('restaurant', $restaurant);
+        return view('restaurants.create')
+            ->with('countries', Country::all())
+            ->with('restaurant', $restaurant);
     }
 
     /**
@@ -77,27 +76,9 @@ class RestaurantsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Restaurant $restaurant)
     {
-        $restaurant->update([
-            'name' => $request->name
-        ]);
-        if ($request->hasFile('image')) {
-            //upload and delete
-            // dd('');
-            $image = $request->file('image')->store('restaurants','public');
-            $restaurant->media()->delete();
-            $restaurant->media()->create([
-                'file_path' => '/storage/'.$image,
-                'file_name' => $request->file('image')->getClientOriginalName(),
-                'file_size' => '500',
-                'file_type' => 'image/jpg',
-                'file_status' => true,
-                'file_sort' => 0,
-                'published' => true,
-            ]);
-        }
-        dd($restaurant->media->file_path);
+        $restaurant->update($request->input());
         session()->flash('success', 'restaurant updated successfully.');
 
         return redirect(route('restaurants.index'));

@@ -56,7 +56,7 @@
 
                 <div class="form-group">
                     <label for="location">{{ trans('blog.location') }}</label>
-                    <textarea name="location" class="form-control" name="location" id="location" cols="5" rows="5">{{ isset($destination) ? $destination->location : '' }}</textarea>
+                    <textarea name="location" class="form-control" name="location" id="location" cols="5" rows="5">{{ isset($restaurant) ? $restaurant->location : '' }}</textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success">
