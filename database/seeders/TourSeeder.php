@@ -264,7 +264,7 @@ class TourSeeder extends Seeder
                 $file_name = $image;
                 $file_size = '500';
                 $file_type = 'image/jpg';
-                $path = 'places/' . $file_name;
+                $path = 'images/places/' . $file_name;
 
                 $t->media()->create([
                     'file_path' => $path,
