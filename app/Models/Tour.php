@@ -10,6 +10,7 @@ class Tour extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $append = ['return'];
     protected $guarded = [];
 
     /**

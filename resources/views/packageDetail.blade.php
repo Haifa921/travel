@@ -14,12 +14,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    {{-- <img src="/images/{{ $tour->touristPlace->media[0]->file_path }}" alt="Image" class="img-fluid"> --}}
+                    {{-- <img src="{{ $tour->touristPlace->media[0]->file_path }}" alt="Image" class="img-fluid"> --}}
                     <div class="lightbox">
                         <div class="row">
                             @foreach ($tour->touristPlace->media as $m)
                                 <div class="col-lg-6">
-                                    <img src="/images/{{ $m->file_path }}" alt="Table Full of Spices"
+                                    <img src="{{ asset($m->file_path) }}" alt="Table Full of Spices"
                                         class="w-100 mb-2 mb-md-2 shadow-1-strong rounded" />
                                 </div>
                             @endforeach
@@ -101,8 +101,18 @@
                     </div>
                     <br />
                     <p>{{ $tour->description }}</p>
-                    <p></p>
-                    <p><a href="#" class="btn btn-primary py-3 px-4">subscrip now</a></p>
+                    <p>  @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif</p>
+
+                    <p><a href="{{route('packages.subscribe',$tour->id)}}" class="btn btn-primary py-3 px-4">subscrip now</a></p>
                 </div>
             </div>
             <hr />

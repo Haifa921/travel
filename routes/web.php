@@ -31,12 +31,13 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale()
     ],
     function () {
-        Route::get('/', [WelcomeController::class, 'index'])->name('home');
+        Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
         Auth::routes(['verify' => true]);
 
         Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages.index');
         Route::get('/packages/{tour}', [ToursController::class, 'show'])->name('packages.show');
+        Route::get('/packages/{tour}/subscribe', [ToursController::class, 'subscribe'])->name('packages.subscribe');
 
         Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
         Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');

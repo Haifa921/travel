@@ -31,7 +31,7 @@
                     <div class="col-md-3 ftco-animate">
                         <div class="project-destination">
                             <a href="" class="img"
-                                style="background-image: url('/images/{{ $p->media[0]->file_path }}');">
+                                style="background-image: url('{{ $p->media[0]->file_path }}');">
                                 <div class="text text-gradient">
                                     <h3>{{ $p->country->name }}, {{ $p->name }}</h3>
                                     <span>{{ $p->tours_count }} Tours</span>
@@ -116,7 +116,7 @@
                     <div class="col-md-4 ftco-animate">
                         <div class="project-wrap">
                             <a href="{{ route('packages.show', $t->id) }}" class="img"
-                                style="background-image: url('images/{{ $t->touristPlace->media[0]->file_path }}');">
+                                style="background-image: url('{{ $t->touristPlace->media[0]->file_path }}');">
                                 <p class="p-2">
                                     {{ $t->touristPlace->category->name }}
                                 </p>

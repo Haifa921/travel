@@ -77,8 +77,8 @@
 
 
                     <div class="btn-group mb-1 nav-item cta">
-                        <button type="button" class="btn btn-sm text-primary nav-item dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-sm text-primary nav-item dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @if (App::getLocale() == 'ar')
                                 {{ LaravelLocalization::getCurrentLocaleName() }}
                                 <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
@@ -107,9 +107,19 @@
                             href="{{ route('about') }}" class="nav-link">{{ trans('blog.About') }}</a></li>
                     <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}"><a
                             href="{{ route('contact') }}" class="nav-link">{{ trans('blog.Contact') }}</a></li>
-                    <li class="nav-item cta"><a href="{{ route('login') }}"
-                            class="nav-link">{{ trans('blog.Login') }}</a></li>
+                    @if (Auth::user())
+                        <li class="nav-item cta">
+                            <form method="post" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn-link nav-link"
+                                    style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 20px; padding-right: 20px; color: #fff; font-weight: 400; opacity: 1 !important; background-color:transparent; border:0px;cursur:pointer">{{ trans('blog.logout') }}</button>
 
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item cta"><a href="{{ route('login') }}"
+                                class="nav-link">{{ trans('blog.login') }}</a></li>
+                    @endif
                 </ul>
             </div>
         </div>

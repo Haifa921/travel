@@ -11,6 +11,9 @@ use App\Http\Requests\Destinations\UpdateDestinationsRequest;
 use App\Models\Category as ModelsCategory;
 use App\Models\Tag as ModelsTag;
 use App\Models\Tour;
+use App\Models\TourSubscription;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Catch_;
 
 class ToursController extends Controller
@@ -178,6 +181,33 @@ class ToursController extends Controller
 
         session()->flash('success', 'Destination restored successfully.');
 
+        return redirect()->back();
+    }
+    public function subscribe(Tour $tour)
+    {
+        $A1 = $tour->takeoff_date;
+        $A2 = Carbon::parse($tour->take_off)->addDays($tour->duration);
+        $oldTours = Tour::where([
+            ['takeoff_date', '<', $A1],
+            ['duration', '>', $tour->duration],
+        ])->orWhere([
+            ['takeoff_date', '>', $A1],
+            ['duration', '<', $tour->duration],
+        ])->whereHas('tourSubscriptions', fn ($q) => $q->where('user_id', '=', Auth::user()->id))
+            ->get();
+        // dd($oldTours);
+        if (count($oldTours) > 0) {
+            session()->flash('error', 'you have overlapped tours!.');
+        } else {
+            $tour->tourSubscriptions()->create([
+                'user_id' => Auth::user()->id,
+                'tour_id' => $tour->id,
+                'price_per_seat' => $tour->price,
+                'status' => 2,
+                'seats_number' => 1
+            ]);
+            session()->flash('success', 'Tour subscriped successfully.');
+        }
         return redirect()->back();
     }
 }

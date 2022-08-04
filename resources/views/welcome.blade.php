@@ -245,7 +245,7 @@
                     <div class="col-md-4 ftco-animate">
                         <div class="project-wrap">
                             <a href="#" class="img"
-                                style="background-image: url('images/{{ $p->media[0]->file_path }}');">
+                                style="background-image: url('{{ $p->media[0]->file_path }}');">
                                 <p class="p-2">
                                     {{ $p->category->name }}
                                 </p>
