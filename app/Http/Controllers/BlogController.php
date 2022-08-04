@@ -125,6 +125,20 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
+        $destinations = Blog::withTrashed()->where('id', $id)->firstOrFail();
+
+
+        if ($destinations->trashed()) {
+            $destinations->media->delete();
+
+            $destinations->forceDelete();
+        } else {
+            $destinations->delete();
+        }
+
+        session()->flash('success', 'blog deleted successfully');
+
+        return redirect(route('blog.index'));
     }
 
     /**
@@ -134,9 +148,18 @@ class BlogController extends Controller
 
     public function trashed()
     {
+        $trashed = Blog::onlyTrashed()->get();
+
+        return view('blog.index')->withblogs($trashed);
     }
 
     public function restore($id)
     {
+        $destinations = Blog::withTrashed()->where('id', $id)->firstOrFail();
+        $destinations->restore();
+
+        session()->flash('success', 'Tour restored successfully.');
+
+        return redirect()->back();
     }
 }
