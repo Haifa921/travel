@@ -26,7 +26,6 @@ class CreateDestinationsRequest extends FormRequest
         return [
             'name' =>'required|unique:Tours',
             'description' =>'required',
-            'image' => 'required|Image',
             'schedule' =>'required',
             'tourist_place_id'=>'required',
             'seats'=>'required',

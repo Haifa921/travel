@@ -47,9 +47,6 @@ class DestinationsController extends Controller
      */
     public function store(CreateDestinationsRequest $request)
     {
-        //upload image
-        // TODO: upload image 
-        // TODO: attach tags
         //create post
         $destination = Tour::create([
             'name' => $request->name,
@@ -95,9 +92,9 @@ class DestinationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Destinations $destinations)
+    public function edit(Tour $tour)
     {
-        return view('destinations.create')->with('destinations', $destinations)->with('categories', Category::all())->with('tags', Tag::all());
+        return view('destinations.create')->with('destination', $tour)->with('touristPlace', TouristPlace::all())->with('tags', Tag::all());
     }
 
     /**
@@ -107,32 +104,30 @@ class DestinationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDestinationsRequest $request, Destinations $destinations)
+    public function update(UpdateDestinationsRequest $request, Tour $tour)
     {
-        $data = $request->only(['title', 'description', 'published_at', 'content']);
-        //check if new image
-        if ($request->hasFile('Image')) {
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'schedule' => $request->schedule,
+            'seats' => $request->seats,
+            'price' => $request->price,
+            'takeoff_date' => $request->takeoff_date,
+            'duration' => $request->duration,
+            'published_at' => $request->published_at,
+            'tourist_place_id' => $request->tourist_place_id
+        ];
 
-            //upload and delete
-            $image = $request->image->store('Destinations');
-
-
-            $destinations->deleteImage();
-
-            $data['image'] = $image;
-        }
         if ($request->tags) {
-            $destinations->tags()->sync($request->tags);
+            $tour->tags()->sync($request->tags);
         }
-
-
         //update attributes
-        $destinations->update($data);
+        $tour->update($data);
 
         //redirect user
-        session()->flash('success', 'Destination updated successfully');
+        session()->flash('success', 'Tour updated successfully');
 
-        return redirect(route('destinations.index'));
+        return redirect(route('tours.index'));
     }
 
     /**
@@ -143,7 +138,7 @@ class DestinationsController extends Controller
      */
     public function destroy($id)
     {
-        $destinations = Destinations::withTrashed()->where('id', $id)->firstOrFail();
+        $destinations = Tour::withTrashed()->where('id', $id)->firstOrFail();
 
 
         if ($destinations->trashed()) {
@@ -154,9 +149,9 @@ class DestinationsController extends Controller
             $destinations->delete();
         }
 
-        session()->flash('success', 'Destination deleted successfully');
+        session()->flash('success', 'Tour deleted successfully');
 
-        return redirect(route('destinations.index'));
+        return redirect(route('tours.index'));
     }
 
     /**
@@ -166,17 +161,17 @@ class DestinationsController extends Controller
 
     public function trashed()
     {
-        $trashed = Destinations::onlyTrashed()->get();
+        $trashed = Tour::onlyTrashed()->get();
 
         return view('destinations.index')->withdestinations($trashed);
     }
 
     public function restore($id)
     {
-        $destinations = Destinations::withTrashed()->where('id', $id)->firstOrFail();
+        $destinations = Tour::withTrashed()->where('id', $id)->firstOrFail();
         $destinations->restore();
 
-        session()->flash('success', 'Destination restored successfully.');
+        session()->flash('success', 'Tour restored successfully.');
 
         return redirect()->back();
     }

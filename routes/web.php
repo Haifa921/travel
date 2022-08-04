@@ -68,9 +68,9 @@ Route::group(
 
             Route::resource('blog', BlogController::class);
 
-            Route::get('trashed-destinations', 'DestinationsController@trashed')->name('trashed-destinations.index');
+            Route::get('trashed-tours', 'DestinationsController@trashed')->name('trashed-tours.index');
 
-            Route::put('restore-destinations/{destinations}', 'DestinationsController@restore')->name('restore-destinations');
+            Route::put('restore-tours/{destinations}', 'DestinationsController@restore')->name('restore-tours');
         });
     }
 );

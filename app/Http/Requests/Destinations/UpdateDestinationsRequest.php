@@ -24,10 +24,14 @@ class UpdateDestinationsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'content' => 'required',
-            'category'=>'required'
+            'name' =>'required',
+            'description' =>'required',
+            'schedule' =>'required',
+            'tourist_place_id'=>'required',
+            'seats'=>'required',
+            'price'=>'required',
+            'takeoff_date'=>'required',
+            'duration'=>'required',
         ];
     }
 }

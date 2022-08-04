@@ -147,7 +147,7 @@
 
                             <ul class="list-group mt-5">
                                 <li class="list-group-item">
-                                    <a href="{{ route('trashed-destinations.index') }}">Unavailable Destinations</a>
+                                    <a href="{{ route('trashed-tours.index') }}">Unavailable Destinations</a>
                                 </li>
                             </ul>
                         </div>
