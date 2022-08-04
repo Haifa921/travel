@@ -1,7 +1,6 @@
 @extends('layouts.front')
 
 @section('page')
-  
     <!-- END nav -->
 
     <div class="hero-wrap js-fullheight" style="background-image: url('images/place-4.jpg');"
@@ -18,7 +17,8 @@
                     <p class="caps" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Travel to the any
                         corner
                         of the world, without going around in circles</p>
-                    <h1 data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{trans('blog.make_your_tours')}} </h1>
+                    <h1 data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ trans('blog.make_your_tours') }}
+                    </h1>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                             <div class="row w-100">
                                 <div class="col-lg align-items-end">
                                     <div class="form-group">
-                                        <label for="#">{{trans('blog.Destination')}}</label>
+                                        <label for="#">{{ trans('blog.Destination') }}</label>
                                         <div class="form-field">
                                             <div class="icon"><span class="ion-ios-search"></span></div>
                                             <input type="text" class="form-control" placeholder="Search place">
@@ -62,7 +62,7 @@
 							</div> --}}
                                 <div class="col-lg align-items-end">
                                     <div class="form-group">
-                                        <label for="#">{{trans('blog.Price_Limit')}}</label>
+                                        <label for="#">{{ trans('blog.Price_Limit') }}</label>
                                         <div class="form-field">
                                             <div class="select-wrap">
                                                 <div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -89,7 +89,8 @@
                                 <div class="col-lg align-self-end">
                                     <div class="form-group">
                                         <div class="form-field">
-                                            <input type="submit" value="Search" class="form-control btn btn-primary ml-auto">
+                                            <input type="submit" value="Search"
+                                                class="form-control btn btn-primary ml-auto">
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +106,7 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate">
-                    <h2 class="mb-4">{{trans('blog.It_time_to_start_your_adventure')}}</h2>
+                    <h2 class="mb-4">{{ trans('blog.It_time_to_start_your_adventure') }}</h2>
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
                         paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
@@ -120,7 +121,7 @@
                             <div class="media block-6 services d-block">
                                 <div class="icon"><span class="flaticon-paragliding"></span></div>
                                 <div class="media-body">
-                                    <h3 class="heading mb-3">{{trans('blog.Activities')}}</h3>
+                                    <h3 class="heading mb-3">{{ trans('blog.Activities') }}</h3>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary</p>
                                 </div>
                             </div>
@@ -129,7 +130,7 @@
                             <div class="media block-6 services d-block">
                                 <div class="icon"><span class="flaticon-route"></span></div>
                                 <div class="media-body">
-                                    <h3 class="heading mb-3">{{trans('blog.Travel_Arrangements')}} </h3>
+                                    <h3 class="heading mb-3">{{ trans('blog.Travel_Arrangements') }} </h3>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary</p>
                                 </div>
                             </div>
@@ -138,7 +139,7 @@
                             <div class="media block-6 services d-block">
                                 <div class="icon"><span class="flaticon-tour-guide"></span></div>
                                 <div class="media-body">
-                                    <h3 class="heading mb-3">{{trans('blog.Private_Guide')}} </h3>
+                                    <h3 class="heading mb-3">{{ trans('blog.Private_Guide') }} </h3>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary</p>
                                 </div>
                             </div>
@@ -147,7 +148,7 @@
                             <div class="media block-6 services d-block">
                                 <div class="icon"><span class="flaticon-map"></span></div>
                                 <div class="media-body">
-                                    <h3 class="heading mb-3">{{trans('blog.Location_Manager')}} </h3>
+                                    <h3 class="heading mb-3">{{ trans('blog.Location_Manager') }} </h3>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary</p>
                                 </div>
                             </div>
@@ -209,7 +210,7 @@
         <div class="container">
             <div class="row justify-content-center pb-4">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">{{trans('blog.Popular_Destinations')}} </h2>
+                    <h2 class="mb-4">{{ trans('blog.Popular_Destinations') }} </h2>
                 </div>
             </div>
             <div class="row">
@@ -217,7 +218,7 @@
                     <div class="col-md-3 ftco-animate">
                         <div class="project-destination">
                             <a href="#" class="img"
-                                style="background-image: url(images/{{ $d->media->file_path }});">
+                                style="background-image: url({{ $d->media->file_path }});">
                                 <div class="text text-gradient">
                                     <h3>{{ $d->name }}</h3>
                                     <span>{{ $d->tours_count }}</span>
@@ -235,7 +236,7 @@
         <div class="container">
             <div class="row justify-content-center pb-4">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">{{trans('blog.Tourist_Places')}} </h2>
+                    <h2 class="mb-4">{{ trans('blog.Tourist_Places') }} </h2>
                 </div>
             </div>
             <div class="row">
