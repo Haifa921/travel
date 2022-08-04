@@ -12,17 +12,23 @@
 
     <div class="card-body">
         @if ($blog->count()>0)
-        <table class="table">
-            <thead>
+        <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
+                                           data-page-length="50"
+                                           style="text-align: center">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
                 <th>Image</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th></th>
                 <th></th>
+</tr>
             </thead>
             <tbody>
                 @foreach ($blog as $blog)
                 <tr>
+                <td>{{$loop->iteration}}</td>
                     <td>
                         <img src="{{asset('/storage/' . $blog->image)}}" width="120px" height="60px"
                             class="img-thumbnail" alt="responsive image">
