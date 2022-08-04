@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Categories\CreateCategoryRequest;
 use App\Http\Requests\Categories\UpdateCategoriesRequest;
 use App\Models\Category;
+use Illuminate\Support\Str;
+
 
 class CategoriesController extends Controller
 {
@@ -40,7 +42,7 @@ class CategoriesController extends Controller
       
         Category::create([
             'name' =>$request ->name,
-            'slug' =>$request ->slug
+            'slug' =>Str::slug($request ->name)
         ]);
 
 

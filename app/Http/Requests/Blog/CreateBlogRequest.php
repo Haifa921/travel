@@ -24,7 +24,7 @@ class CreateBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' =>'required|unique:Destinations',
+            'title' =>'required|unique:blogs',
             'description' =>'required',
             'image' => 'required|Image',
             'content' =>'required',

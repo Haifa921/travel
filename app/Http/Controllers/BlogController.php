@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use App\Http\Requests\Blo\CreateBlogRequest;
+use App\Http\Requests\Blog\CreateBlogRequest as BlogCreateBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
@@ -26,21 +30,30 @@ class BlogController extends Controller
         return view('blog.create')->with('categories', Category::all());
     }
 
-    public function store(CreateBlogRequest $request)
+    public function store(BlogCreateBlogRequest $request)
     {
         //upload image
-        $image = $request->image->store('blogs');
+        $image = $request->image->store('blogs', 'public');
         //create post
-        $destination = Blog::create([
+        $blog = Blog::create([
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
             'image' => $request->image,
-            'slug' =>   str_slug($request->title),
+            'slug' =>   Str::slug($request->title),
             'published_at' => $request->published_at,
             'category_id' => $request->category
         ]);
-
+        
+        $blog->media()->create([
+            'file_path' => '/storage/' . $image,
+            'file_name' => $request->file('image')->getClientOriginalName(),
+            'file_size' => '500',
+            'file_type' => 'image/jpg',
+            'file_status' => true,
+            'file_sort' => 0,
+            'published' => true,
+        ]);
 
         //flash message 
         session()->flash('success', 'Blog Created Successfully');
@@ -54,8 +67,8 @@ class BlogController extends Controller
 
         return view('blogDetail')
             ->with('blog', Blog::where('slug', $slug)->first())
-            ->with('recent', Blog::whereNotNull('published_at')->orderBy('published_at','DESC')->take(3)->get())
-            ->with('categories', Category::withCount('blogs')->has('blogs', '>' , 0)->take(5)->get())
+            ->with('recent', Blog::whereNotNull('published_at')->orderBy('published_at', 'DESC')->take(3)->get())
+            ->with('categories', Category::withCount('blogs')->has('blogs', '>', 0)->take(5)->get())
             ->with('tagcloud', Tag::withCount('blogs')->orderBy('blogs_count', 'desc')->take(8)->get())
             ->with('tags', Tag::all());
     }
