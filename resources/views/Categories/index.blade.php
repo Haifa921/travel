@@ -12,8 +12,8 @@
       @if ($categories->count()>0)
       <table class="table">
          <thead>
-            <th>Name</th>
-            <th>Tours Count</th>
+            <th>{{ trans('blog.Name') }} </th>
+            <th>{{ trans('blog.Tour_Count') }}  </th>
             <th></th>
          </thead>
 
@@ -28,9 +28,10 @@
                </td>
                <td>
                   <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">
-                     Edit
+                  {{ trans('blog.Edit') }}  
                   </a>
-                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{$category->id}})">Delete</button>
+                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{$category->id}})">
+                  {{ trans('blog.Delete') }} </button>
                </td>
             </tr>
             @endforeach

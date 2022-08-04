@@ -7,13 +7,13 @@
    <a href="{{route('tags.create')}}" class="btn btn-success ">Add Tag</a>
 </div>
 <div class="card card-default">
-   <div class="card-header">Tags</div>
+   <div class="card-header">{{ trans('blog.Tags') }} </div>
    <div class="card-body">
       @if ($tags->count()>0)
       <table class="table">
          <thead>
-            <th>Name</th>
-            <th>Tours Count</th>
+            <th>{{ trans('blog.Name') }}  </th>
+            <th>{{ trans('blog.Tour_Count') }}   </th>
             <th></th>
          </thead>
 
@@ -27,9 +27,10 @@
                   {{$tag->tours()->count() }}
                <td>
                   <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-info btn-sm">
-                     Edit
+                  {{ trans('blog.Edit') }}   
                   </a>
-                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{$tag->id}})">Delete</button>
+                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{$tag->id}})">
+                  {{ trans('blog.Delete') }}  </button>
                </td>
             </tr>
             @endforeach

@@ -8,7 +8,7 @@
 
 
 <div class="card card-default">
-    <div class="card-header">Blog</div>
+    <div class="card-header">{{ trans('blog.Blog') }} </div>
 
     <div class="card-body">
         @if ($blog->count()>0)
@@ -18,9 +18,9 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Category</th>
+                <th>{{ trans('blog.Image') }} </th>
+                <th>{{ trans('blog.Title') }} </th>
+                <th>{{ trans('blog.Category') }} </th>
                 <th></th>
                 <th></th>
 </tr>

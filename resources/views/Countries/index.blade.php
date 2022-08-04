@@ -4,17 +4,17 @@
 @section('content')
 
 <div class="d-flex justify-content-end mb-2">
-   <a href="{{route('countries.create')}}" class="btn btn-success ">Add Country</a>
+   <a href="{{route('countries.create')}}" class="btn btn-success ">{{ trans('blog.Add_Country') }} </a>
 </div>
 <div class="card card-default">
-   <div class="card-header">Countries</div>
+   <div class="card-header">{{ trans('blog.countries') }}</div>
    <div class="card-body">
       @if ($countries->count()>0)
       <table class="table">
          <thead>
-            <th>Name</th>
-            <th>Tourist places Count</th>
-            <th>Tours Count</th>
+            <th>{{ trans('blog.Name') }}</th>
+            <th>{{ trans('blog.Tourist_places_Count') }}  </th>
+            <th>{{ trans('blog.Tour_Count') }} </th>
             <th></th>
          </thead>
 
@@ -32,9 +32,10 @@
                </td>
                <td>
                   <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-info btn-sm">
-                     Edit
+                  {{ trans('blog.Edit') }}  
                   </a>
-                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{$country->id}})">Delete</button>
+                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{$country->id}})">
+                  {{ trans('blog.Delete') }}</button>
                </td>
             </tr>
             @endforeach

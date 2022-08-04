@@ -36,6 +36,21 @@ return [ 'make_your_tours'=>'اجعل رحلتك جميلة معنا',
 'Categories'=>'الفئات',
 'Tags'=>'صلات',
 'Blogs'=>'الاخبار',
+'Name'=>'الاسم',
+'Email'=>'البريد الالكتروني',
+'Make_Admin'=>'اضافة مسؤول',
+'Pricing'=>'الاسعار',
+'Add_Tour'=>'اضافة رحلة',
+'Edit'=>'تعديل',
+'Trahs'=>'حذف',
+'Tours'=>'رحلات',
+'Tourist_places_Count'=>'عدد الرحلات السياحية',
+'Tour_Count'=>'عدد الرحلات',
+'Delete'=>'حذف',
+'Add_Country'=>'اضافة مدينة',
+'Places'=>'الاماكن',
+'Add_Place'=>'اضافة اماكن',
+
 
 
 
