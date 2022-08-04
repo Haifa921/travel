@@ -42,25 +42,25 @@
                 </button>
 
                 <div class="btn-group mb-1 nav-item cta">
-                        <button type="button" class="btn btn-sm text-primary nav-item dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            @if (App::getLocale() == 'ar')
-                                {{ LaravelLocalization::getCurrentLocaleName() }}
-                                <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
-                            @else
-                                {{ LaravelLocalization::getCurrentLocaleName() }}
-                                <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
-                            @endif
-                        </button>
-                        <div class="dropdown-menu">
-                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
-                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                    {{ $properties['native'] }}
-                                </a>
-                            @endforeach
-                        </div>
+                    <button type="button" class="btn btn-sm text-primary nav-item dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if (App::getLocale() == 'ar')
+                            {{ LaravelLocalization::getCurrentLocaleName() }}
+                            <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
+                        @else
+                            {{ LaravelLocalization::getCurrentLocaleName() }}
+                            <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
+                        @endif
+                    </button>
+                    <div class="dropdown-menu">
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        @endforeach
                     </div>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -104,7 +104,7 @@
                                         style="display: none;">
                                         @csrf
                                     </form>
-                                    
+
                                 </div>
                             </li>
                         @endguest
@@ -129,13 +129,15 @@
                     @endif
                     <div class="row">
                         <div class="col-md-4">
-                            
-                            <ul class="list-group">
 
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="{{ route('home') }}">{{ trans('blog.Dashboard') }}</a>
+                                </li>
                                 @if (auth()->user()->isAdmin())
                                     <li class="list-group-item">
                                         <a href="{{ route('users.index') }}">
-                                        {{ trans('blog.Users') }}  
+                                            {{ trans('blog.Users') }}
                                         </a>
                                     </li>
                                 @endif
