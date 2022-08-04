@@ -1,127 +1,115 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="card card-default">
+        <div class="card-header">
+            {{ isset($place) ? 'Edit Tourist Place' : 'Create Tourist Place' }}
+        </div>
 
-<div class="card card-default">
-    <div class="card-header">
-        {{isset($destinations)? 'Edit Destination': 'Create Destination'}}
-    </div>
+        <div class="card-body">
+            @include('partials.errors')
+            <form action="{{ isset($place) ? route('places.update', $place->id) : route('places.store') }}"
+                method="POST" enctype="multipart/form-data">
+                @csrf
 
-    <div class="card-body">
-        @include('partials.errors')
-        <form
-            action="{{isset($destination) ? route('destinations.update', $destinations->id): route('destinations.store')}}"
-            method="POST" enctype="multipart/form-data">
-            @csrf
+                @if (isset($place))
+                    @method('PUT')
+                @endif
 
-            @if (isset($destination))
-            @method('PUT')
+                <div class="form-group">
+                    <label for="name">name</label>
+                    <input type="text" class="form-control" name="name" id="name"
+                        value="{{ isset($place) ? $place->name : '' }}">
+                </div>
 
-            @endif
+                <div class="form-group">
+                    <label for="Description">Description</label>
+                    <textarea name="description" class="form-control" name="description" id="description" cols="5" rows="5">{{ isset($place) ? $place->description : '' }}</textarea>
+                </div>
 
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" id="title"
-                    value="{{isset($destinations) ? $destinations->title: ''}}">
-            </div>
+                {{-- <div class="form-group">
+                    <label for="content">Content</label>
+                    <input id="content" type="hidden" name="content"
+                        value="{{ isset($place) ? $place->content : '' }}">
+                    <trix-editor input="content"></trix-editor>
+                </div> --}}
 
-            <div class="form-group">
-                <label for="Description">Description</label>
-                <textarea name="description" class="form-control" name="description" id="description" cols="5"
-                    rows="5">{{ isset($destination) ? $destination->description : ''}}</textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="content">Content</label>
-                <input id="content" type="hidden" name="content"
-                    value="{{isset($destination) ?$destination->content: ''}}">
-                <trix-editor input="content"></trix-editor>
-            </div>
-
-            <div class="form-group">
-                <label for="published_at">Published At</label>
-                <input type="text" class="form-control" name="published_at" id="published_at"
-                    value="{{isset($destination) ?$destination->published_at: ''}}"">
-            </div>
-            @if (isset($destination))
-            <div class=" form-group">
-                <img src="{{asset($destination->image)}}" alt="" style="width: 100%">
-            </div>
-            @endif
-
-            <div class="form-group">
-                <label for="image">Image</label>
-                <input type="file" class="form-control" name="image" id="image">
-            </div>
-
-            <div class="form-group">
-                <label for="category">Category</label>
-                <select name="category" id="category" class="form-control">
-                    @foreach ($categories as $category)
-                    <option value="{{$category->id}}" @if (isset($destinations)) @if ($category->
-                        id===$category->category_id)
-                        selected
-                        @endif
-                        @endif
-                        >
-                        {{$category->name}}
-                    </option>
+                {{-- <div class="form-group">
+                    <label for="published_at">Published At</label>
+                    <input type="text" class="form-control" name="published_at" id="published_at"
+                        value="{{ isset($place) ? $place->published_at : '' }}"">
+                </div> --}}
+                @if (isset($place))
+                    <h4>Existed Images</h4>
+                    <div class=" form-group row">
+                    @foreach ($place->media as $p)
+                        <img class="col" src="{{ asset($p->file_path) }}" alt="" style="width: 50 %">
                     @endforeach
-                </select>
-            </div>
+                    </div>
+                @endif
 
-            @if ($tags->count()>0)
-            <div class="form-group">
-                <label for="tags">Tags</label>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control" name="images[]" id="image" multiple>
+                </div>
 
-                <select name="tags" id="tags" class="form-control tags-selector" multiple>
-                    @foreach ($tags as $tag )
-                    <option value="{{$tag->id}}" @if(isset($destination)) @if ($destination->hasTag($tag->id))
-                        selected
-                        @endif
-                        @endif
-                        >
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select name="country_id" id="country" class="form-control">
+                        @foreach ($countries as $country)
+                            <option value="{{ $country->id }}"
+                                @if (isset($place)) @if ($country->id === $country->country_id)
+                        selected @endif
+                                @endif
+                                >
+                                {{ $country->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category_id" id="category" class="form-control">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"
+                                @if (isset($place)) @if ($category->id === $category->category_id)
+                        selected @endif
+                                @endif
+                                >
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
 
-                        {{$tag->name}}
-                    </option>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">
+                        {{ isset($place) ? 'Update Place' : 'Create Place' }}
+                    </button>
+                </div>
 
-                    @endforeach
-
-                </select>
-            </div>
-            @endif
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-success">
-                    {{isset($destination) ? 'Update Destination':'Create Destination'}}
-                </button>
-            </div>
-
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
 @endsection
 
 @section('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script>
-    flatpickr('#published_at',{
-        enableTime:true
-    })
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
+        flatpickr('#published_at', {
+            enableTime: true
+        })
 
-    $(document).ready(function() {
-    $('.tags-selector').select2();
-});
-</script>
+        $(document).ready(function() {
+            $('.tags-selector').select2();
+        });
+    </script>
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 @endsection

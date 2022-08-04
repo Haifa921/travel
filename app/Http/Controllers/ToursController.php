@@ -82,7 +82,7 @@ class ToursController extends Controller
      */
     public function show(Tour $tour)
     {
-$tour->load(['touristPlace']);
+        $tour->load(['touristPlace']);
         return view('packageDetail')
             ->with('tour', $tour)
             ->with('tags', ModelsTag::all())

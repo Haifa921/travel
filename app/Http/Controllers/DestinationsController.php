@@ -47,7 +47,6 @@ class DestinationsController extends Controller
      */
     public function store(CreateDestinationsRequest $request)
     {
-        //create post
         $destination = Tour::create([
             'name' => $request->name,
             'description' => $request->description,
@@ -65,10 +64,8 @@ class DestinationsController extends Controller
             $destination->tags()->attach($request->tags);
         }
 
-        //flash message 
         session()->flash('success', 'tour Created Successfully');
 
-        //redirect
         return redirect(route('tours.index'));
     }
 
