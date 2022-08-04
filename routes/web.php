@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DestinationsController;
-use App\Http\Controllers\RestaurantsController;
-use App\Http\Controllers\TagsController;
-use App\Http\Controllers\TouristPlacesController;
+// use App\Http\Controllers\BlogController;
+// use App\Http\Controllers\CategoriesController;
+// use App\Http\Controllers\CountriesController;
+// use App\Http\Controllers\DestinationsController;
+// use App\Http\Controllers\RestaurantsController;
+// use App\Http\Controllers\TagsController;
+// use App\Http\Controllers\TouristPlacesController;
 use App\Http\Controllers\ToursController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
@@ -25,49 +25,52 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale()
-    ], function () {
-Route::get('/', [WelcomeController::class, 'index'])->name('home');
+    ],
+    function () {
+        Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
-Auth::routes(['verify' => true]);
+        Auth::routes(['verify' => true]);
 
-Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages.index');
-Route::get('/packages/{tour}', [ToursController::class, 'show'])->name('packages.show');
+        Route::get('/packages', [WelcomeController::class, 'packages'])->name('packages.index');
+        Route::get('/packages/{tour}', [ToursController::class, 'show'])->name('packages.show');
 
-Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
-Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
-Route::get('/news', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/news/create', [BlogController::class, 'create'])->name('blog.create');
-Route::get('/about', [WelcomeController::class, 'about'])->name('about');
-Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
-Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
+        Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
+        Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
+        Route::get('/news', [BlogController::class, 'index'])->name('blog.index');
+        Route::get('/news/create', [BlogController::class, 'create'])->name('blog.create');
+        Route::get('/about', [WelcomeController::class, 'about'])->name('about');
+        Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
+        Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('users/profile', 'UsersController@edit')->name('users.edit-profile');
+        Route::middleware(['auth', 'admin'])->group(function () {
+            Route::get('users/profile', 'UsersController@edit')->name('users.edit-profile');
 
-    Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
+            Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
 
-    Route::get('users', [UsersController::class,'index'])->name('users.index');
+            Route::get('users', [UsersController::class, 'index'])->name('users.index');
 
-    Route::post('users|{user}|make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
-    
-    Route::get('/dashboard', [DashboardController::class,'index'])->name('home');
+            Route::post('users|{user}|make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
 
-    Route::resource('categories', CategoriesController::class);
-    Route::resource('countries', CountriesController::class);
-    Route::resource('restaurants', RestaurantsController::class);
-    Route::resource('places', TouristPlacesController::class);
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
 
-    Route::resource('tours', DestinationsController::class);
+            Route::resource('categories', CategoriesController::class);
+            Route::resource('countries', CountriesController::class);
+            Route::resource('restaurants', RestaurantsController::class);
+            Route::resource('places', TouristPlacesController::class);
 
-    Route::resource('tags', TagsController::class);
+            Route::resource('tours', DestinationsController::class);
 
-    Route::resource('blog', BlogController::class);
+            Route::resource('tags', TagsController::class);
 
-    Route::get('trashed-destinations', 'DestinationsController@trashed')->name('trashed-destinations.index');
+            Route::resource('blog', BlogController::class);
 
-    Route::put('restore-destinations/{destinations}', 'DestinationsController@restore')->name('restore-destinations');
-});
-});
+            Route::get('trashed-destinations', 'DestinationsController@trashed')->name('trashed-destinations.index');
+
+            Route::put('restore-destinations/{destinations}', 'DestinationsController@restore')->name('restore-destinations');
+        });
+    }
+);

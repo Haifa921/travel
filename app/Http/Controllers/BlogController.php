@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Blog;
-use App\Models\Category;
 use App\Http\Requests\Blo\CreateBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
-use App\Models\Blog as ModelsBlog;
-use App\Models\Category as ModelsCategory;
+use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Tag;
 
 class BlogController extends Controller
@@ -55,9 +53,9 @@ class BlogController extends Controller
     {
 
         return view('blogDetail')
-            ->with('blog', ModelsBlog::where('slug', $slug)->first())
-            ->with('recent', ModelsBlog::whereNotNull('published_at')->orderBy('published_at','DESC')->take(3)->get())
-            ->with('categories', ModelsCategory::withCount('blogs')->has('blogs', '>' , 0)->take(5)->get())
+            ->with('blog', Blog::where('slug', $slug)->first())
+            ->with('recent', Blog::whereNotNull('published_at')->orderBy('published_at','DESC')->take(3)->get())
+            ->with('categories', Category::withCount('blogs')->has('blogs', '>' , 0)->take(5)->get())
             ->with('tagcloud', Tag::withCount('blogs')->orderBy('blogs_count', 'desc')->take(8)->get())
             ->with('tags', Tag::all());
     }
@@ -68,9 +66,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ModelsBlog $blog)
+    public function edit(Blog $blog)
     {
-        return view('blog.create')->with('blogs', $blog)->with('categories', ModelsCategory::all());
+        return view('blog.create')->with('blogs', $blog)->with('categories', Category::all());
     }
 
     /**

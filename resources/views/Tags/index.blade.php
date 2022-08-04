@@ -13,7 +13,7 @@
       <table class="table">
          <thead>
             <th>Name</th>
-            <th>Destinations Count</th>
+            <th>Tours Count</th>
             <th></th>
          </thead>
 
@@ -24,7 +24,7 @@
                   {{$tag->name}}
                </td>
                <td>
-                  {{$tag->Destinations()->count() }}
+                  {{$tag->tours()->count() }}
                <td>
                   <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-info btn-sm">
                      Edit

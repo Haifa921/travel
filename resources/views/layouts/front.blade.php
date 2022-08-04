@@ -8,35 +8,35 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
 
-    <link rel="stylesheet" href="{{asset('css/aos.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
 
-    <link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
 
-    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
-    <link rel="stylesheet" href="{{asset('css/jquery.timepicker.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
 
 
-    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
-    <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    
-@yield('css')
-<!--- Style css -->
-<link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-<!--- Style css -->
-@if (App::getLocale() == 'en')
-    <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">
-@else
-    <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
-@endif
+    @yield('css')
+    <!--- Style css -->
+    <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
+
+    <!--- Style css -->
+    @if (App::getLocale() == 'en')
+        <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">
+    @else
+        <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
+    @endif
 
     <style>
         .text-gradient:hover {
@@ -74,32 +74,41 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                
 
-<div class="btn-group mb-1">
-    <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      @if (App::getLocale() == 'ar')
-      {{ LaravelLocalization::getCurrentLocaleName() }}
-     <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
-      @else
-      {{ LaravelLocalization::getCurrentLocaleName() }}
-      <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
-      @endif
-      </button>
-    <div class="dropdown-menu">
-        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                    {{ $properties['native'] }}
-                </a>
-        @endforeach
-    </div>
-</div>
-                    <li class="nav-item {{request()->routeIs('home') ? 'active' : '' }}"><a href="{{route('home')}}" class="nav-link">{{trans('blog.Home')}}</a></li>
-                    <li class="nav-item {{request()->routeIs('packages.*') ? 'active' : '' }}"><a href="{{ route('packages.index') }}" class="nav-link">{{trans('blog.Destination')}}</a></li>
-                    <li class="nav-item {{request()->routeIs('blog.*') ? 'active' : '' }}"><a href="{{ route('blog.index') }}" class="nav-link">{{trans('blog.Blog')}}</a></li>
-                    <li class="nav-item {{request()->routeIs('about') ? 'active' : '' }}"><a href="{{ route('about') }}" class="nav-link">{{trans('blog.About')}}</a></li>
-                    <li class="nav-item {{request()->routeIs('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}" class="nav-link">{{trans('blog.Contact')}}</a></li>
-                    <li class="nav-item cta"><a href="{{ route('login') }}" class="nav-link">{{trans('blog.Login')}}</a></li>
+
+                    <div class="btn-group mb-1 nav-item cta">
+                        <button type="button" class="btn btn-sm text-primary nav-item dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            @if (App::getLocale() == 'ar')
+                                {{ LaravelLocalization::getCurrentLocaleName() }}
+                                <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
+                            @else
+                                {{ LaravelLocalization::getCurrentLocaleName() }}
+                                <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
+                            @endif
+                        </button>
+                        <div class="dropdown-menu">
+                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}"><a
+                            href="{{ route('home') }}" class="nav-link">{{ trans('blog.Home') }}</a></li>
+                    <li class="nav-item {{ request()->routeIs('packages.*') ? 'active' : '' }}"><a
+                            href="{{ route('packages.index') }}" class="nav-link">{{ trans('blog.Destination') }}</a>
+                    </li>
+                    <li class="nav-item {{ request()->routeIs('blog.*') ? 'active' : '' }}"><a
+                            href="{{ route('blog.index') }}" class="nav-link">{{ trans('blog.Blog') }}</a></li>
+                    <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}"><a
+                            href="{{ route('about') }}" class="nav-link">{{ trans('blog.About') }}</a></li>
+                    <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}"><a
+                            href="{{ route('contact') }}" class="nav-link">{{ trans('blog.Contact') }}</a></li>
+                    <li class="nav-item cta"><a href="{{ route('login') }}"
+                            class="nav-link">{{ trans('blog.Login') }}</a></li>
 
                 </ul>
             </div>
@@ -177,22 +186,22 @@
             </div>
         </div>
     </footer>
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/jquery.easing.1.3.js')}}"></script>
-    <script src="{{asset('js/jquery.waypoints.min.js')}}"></script>
-    <script src="{{asset('js/jquery.stellar.min.js')}}"></script>
-    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('js/aos.js')}}"></script>
-    <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
-    <script src="{{asset('js/scrollax.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/scrollax.min.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="{{asset('js/google-map.js')}}"></script>
-    <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{ asset('js/google-map.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
 </body>
 
