@@ -30,7 +30,7 @@
                 <tr>
                 <td>{{$loop->iteration}}</td>
                     <td>
-                        <img src="{{asset('images/' . $blog->media->file_path)}}" width="120px" height="60px"
+                        <img src="{{asset( $blog->media->file_path)}}" width="120px" height="60px"
                             class="img-thumbnail" alt="responsive image">
                     </td>
                     <td>
