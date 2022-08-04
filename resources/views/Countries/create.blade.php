@@ -2,35 +2,41 @@
 
 
 @section('content')
+    <div class="card card-default">
+        <div class="card-header">
+            {{ isset($country) ? 'Edit Country' : 'Create Country' }}
+        </div>
+        <div class="card-body">
+            @include('partials.errors')
 
+            <form action="{{ isset($country) ? route('countries.update', $country->id) : route('countries.store') }}"
+                method="POST" enctype='multipart/form-data'>
+                @csrf
+                @if (isset($country))
+                    @method('PUT')
+                @endif
+                <div class="form-group">
+                    <label for="image">Name</label>
+                    <input type="text" id="name" class="form-control" name="name"
+                        value="{{ isset($country) ? $country->name : '' }}">
+                </div>
+                @if (isset($country->media))
+                    <div class=" form-group">
+                        <img src="images/{{ $country->media->file_path }}" alt="" style="width: 100%">
+                    </div>
+                @endif
 
-<div class="card card-default">
-   <div class="card-header">
-      {{isset($category)? 'Edit Category': 'Create Category'}}
-   </div>
-   <div class="card-body">
-      @include('partials.errors')
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control" name="image" id="image">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success">
+                        {{ isset($country) ? 'Update Country' : 'Add Country' }}
+                    </button>
+                </div>
+            </form>
+        </div>
 
-      <form action="{{isset($category) ? route('countries.update', $category->id) :route('countries.store') }}"
-         method="POST">
-         @csrf
-         @if (isset($category))
-         @method('PUT')
-         @endif
-         <div class="form-group">
-            <input type="text" id="name" class="form-control" name="name"
-               value="{{ isset($category)? $category->name:'' }}">
-         </div>
-
-         <div class="form-group">
-            <button class="btn btn-success">
-               {{isset($category) ? 'Update Category' : 'Add Category'}}
-            </button>
-         </div>
-      </form>
-   </div>
-
-</div>
-
-
+    </div>
 @endsection

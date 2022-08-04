@@ -65,9 +65,6 @@ class DestinationsController extends Controller
             $destination->tags()->attach($request->tags);
         }
 
-
-
-
         //flash message 
         session()->flash('success', 'tour Created Successfully');
 
