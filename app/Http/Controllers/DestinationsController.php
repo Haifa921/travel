@@ -9,6 +9,7 @@ use App\Http\Requests\Destinations\UpdateDestinationsRequest;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Tour;
+use App\Models\TouristPlace;
 use PhpParser\Node\Stmt\Catch_;
 
 class DestinationsController extends Controller
@@ -16,7 +17,7 @@ class DestinationsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
+        $this->middleware('verifyTouristPlacesCount')->only(['create', 'store']);
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +36,7 @@ class DestinationsController extends Controller
      */
     public function create()
     {
-        return view('destinations.create')->with('categories', Category::all())->with('tags', Tag::all());
+        return view('destinations.create')->with('touristPlace', TouristPlace::all())->with('tags', Tag::all());
     }
 
     /**
@@ -47,18 +48,23 @@ class DestinationsController extends Controller
     public function store(CreateDestinationsRequest $request)
     {
         //upload image
-        $image = $request->image->store('destinations');
+        // TODO: upload image 
+        // TODO: attach tags
         //create post
-        $destination = Destinations::create([
-            'title' => $request->title,
+        $destination = Tour::create([
+            'name' => $request->name,
             'description' => $request->description,
-            'content' => $request->content,
-            'image' => $image,
+            'schedule' => $request->schedule,
+            'seats' => $request->seats,
+            'price' => $request->price,
+            'takeoff_date' => $request->takeoff_date,
+            'duration' => $request->duration,
+            // 'image' => $image,
             'published_at' => $request->published_at,
-            'category_id'=>$request->category
+            'tourist_place_id' => $request->tourist_place_id
         ]);
 
-        if($request->tags){
+        if ($request->tags) {
             $destination->tags()->attach($request->tags);
         }
 
@@ -66,10 +72,10 @@ class DestinationsController extends Controller
 
 
         //flash message 
-        session()->flash('success', 'Destination Created Successfully');
+        session()->flash('success', 'tour Created Successfully');
 
         //redirect
-        return redirect(route('destinations.index'));
+        return redirect(route('tours.index'));
     }
 
     /**
@@ -115,7 +121,7 @@ class DestinationsController extends Controller
 
             $data['image'] = $image;
         }
-        if ($request->tags){
+        if ($request->tags) {
             $destinations->tags()->sync($request->tags);
         }
 
@@ -143,7 +149,7 @@ class DestinationsController extends Controller
         if ($destinations->trashed()) {
             $destinations->deleteImage();
 
-            $destinations->forceDelete();   
+            $destinations->forceDelete();
         } else {
             $destinations->delete();
         }
@@ -173,6 +179,5 @@ class DestinationsController extends Controller
         session()->flash('success', 'Destination restored successfully.');
 
         return redirect()->back();
-
     }
 }

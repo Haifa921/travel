@@ -2,7 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\VerifyCategoriesCount;
 use App\Http\Middleware\VerifyIsAdmin;
+use App\Http\Middleware\VerifyTouristPlacesCount;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -64,13 +66,14 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admin' =>VerifyIsAdmin::class,
+        'admin' => VerifyIsAdmin::class,
+        'verifyCategoriesCount' =>VerifyCategoriesCount::class,
+        'verifyTouristPlacesCount' =>VerifyTouristPlacesCount::class,
         'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
         'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
         'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
-   
 
     ];
 }
