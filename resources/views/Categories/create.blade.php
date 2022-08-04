@@ -21,7 +21,10 @@
             <input type="text" id="name" class="form-control" name="name"
                value="{{ isset($category)? $category->name:'' }}">
          </div>
-
+         <div class="form-group">
+            <input type="text" id="slug" class="form-control" name="slug"
+               value="{{ isset($category)? $category->slug:'' }}">
+         </div>
          <div class="form-group">
             <button class="btn btn-success">
                {{isset($category) ? 'Update Category' : 'Add Category'}}
