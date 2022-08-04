@@ -41,6 +41,26 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <div class="btn-group mb-1 nav-item cta">
+                        <button type="button" class="btn btn-sm text-primary nav-item dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            @if (App::getLocale() == 'ar')
+                                {{ LaravelLocalization::getCurrentLocaleName() }}
+                                <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
+                            @else
+                                {{ LaravelLocalization::getCurrentLocaleName() }}
+                                <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
+                            @endif
+                        </button>
+                        <div class="dropdown-menu">
+                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -84,6 +104,7 @@
                                         style="display: none;">
                                         @csrf
                                     </form>
+                                    
                                 </div>
                             </li>
                         @endguest
@@ -108,40 +129,41 @@
                     @endif
                     <div class="row">
                         <div class="col-md-4">
+                            
                             <ul class="list-group">
 
                                 @if (auth()->user()->isAdmin())
                                     <li class="list-group-item">
                                         <a href="{{ route('users.index') }}">
-                                            Users
+                                        {{ trans('blog.Users') }}  
                                         </a>
                                     </li>
                                 @endif
 
                                 <li class="list-group-item">
-                                    <a href="{{ route('tours.index') }}">Tours / Destinations</a>
+                                    <a href="{{ route('tours.index') }}">{{ trans('blog.tours_destination') }}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="{{ route('restaurants.index') }}">Restaurants</a>
+                                    <a href="{{ route('restaurants.index') }}">{{ trans('blog.resturant') }}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="{{ route('countries.index') }}">Countries</a>
+                                    <a href="{{ route('countries.index') }}">{{ trans('blog.countries') }}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="{{ route('places.index') }}">Tourist Places</a>
+                                    <a href="{{ route('places.index') }}">{{ trans('blog.tourist_place') }} </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="{{ route('categories.index') }}">Categories</a>
+                                    <a href="{{ route('categories.index') }}">{{ trans('blog.Categories') }}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="{{ route('tags.index') }}">Tags</a>
+                                    <a href="{{ route('tags.index') }}">{{ trans('blog.Tags') }}</a>
                                 </li>
                             </ul>
 
 
                             <ul class="list-group mt-5">
                                 <li class="list-group-item">
-                                    <a href="{{ route('blog.index') }}">Blogs</a>
+                                    <a href="{{ route('blog.index') }}">{{ trans('blog.Blogs') }}</a>
                                 </li>
                             </ul>
 
