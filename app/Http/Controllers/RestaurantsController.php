@@ -90,9 +90,9 @@ class RestaurantsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Restaurant $restaurant)
     {
-        if ($restaurant->tours != null && $restaurant->tours->count() > 0) {
+        if ($restaurant->restaurantReservations != null && $restaurant->restaurantReservations->count() > 0) {
             session()->flash('error', 'Category cannot be deleted as it is linked to a tour');
 
             return redirect()->back();

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use HasFactory;
-protected $guarded=[];
+    protected $guarded = [];
     public function restaurantReservations()
     {
         return $this->hasMany(RestaurantReservation::class);
@@ -17,4 +17,5 @@ protected $guarded=[];
     {
         return $this->belongsTo(Country::class);
     }
+
 }
