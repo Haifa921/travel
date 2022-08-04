@@ -45,7 +45,7 @@
             </div>
             @if (isset($blog))
             <div class=" form-group">
-                <img src="{{asset($blog->image)}}" alt="" style="width: 100%">
+                <img src="{{asset($blog->media->file_path)}}" alt="" style="width: 100%">
             </div>
             @endif
 

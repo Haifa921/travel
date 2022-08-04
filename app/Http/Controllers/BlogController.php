@@ -44,7 +44,7 @@ class BlogController extends Controller
             'published_at' => $request->published_at,
             'category_id' => $request->category
         ]);
-        
+
         $blog->media()->create([
             'file_path' => '/storage/' . $image,
             'file_name' => $request->file('image')->getClientOriginalName(),
@@ -81,7 +81,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view('blog.create')->with('blogs', $blog)->with('categories', Category::all());
+        return view('blog.create')->with('blog', $blog)->with('categories', Category::all());
     }
 
     /**
