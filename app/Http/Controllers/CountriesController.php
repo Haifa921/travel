@@ -44,7 +44,7 @@ class CountriesController extends Controller
             $image = $request->file('image')->store('countries','public');
 
             $c->media()->create([
-                'file_path' => $image,
+                'file_path' => '/storage/'.$image,
                 'file_name' => $request->file('image')->getClientOriginalName(),
                 'file_size' => '500',
                 'file_type' => 'image/jpg',
