@@ -26,7 +26,7 @@ class TourSeeder extends Seeder
             'name' => 'Syria'
         ]);
         $country1->media()->create([
-            'file_path' => 'countries/syria.jpg',
+            'file_path' => '/images/countries/syria.jpg',
             'file_name' => 'syria.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',
@@ -39,7 +39,7 @@ class TourSeeder extends Seeder
             'name' => 'Australia'
         ]);
         $country2->media()->create([
-            'file_path' => 'countries/australia.jpg',
+            'file_path' => '/images/countries/australia.jpg',
             'file_name' => 'australia.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',
@@ -52,7 +52,7 @@ class TourSeeder extends Seeder
             'name' => 'Thailand'
         ]);
         $country3->media()->create([
-            'file_path' => 'countries/thailand.jpg',
+            'file_path' => '/images/countries/thailand.jpg',
             'file_name' => 'thailand.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',
@@ -65,7 +65,7 @@ class TourSeeder extends Seeder
             'name' => 'Canada'
         ]);
         $country4->media()->create([
-            'file_path' => 'countries/canada.jpg',
+            'file_path' => '/images/countries/canada.jpg',
             'file_name' => 'canada.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',

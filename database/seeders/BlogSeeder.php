@@ -95,7 +95,7 @@ class BlogSeeder extends Seeder
             'published_at' => Date::now()
         ]);
         $blog1->media()->create([
-            'file_path' => 'blogs/blog.jpg',
+            'file_path' => '/images/blogs/blog.jpg',
             'file_name' => 'blog.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',
@@ -115,7 +115,7 @@ class BlogSeeder extends Seeder
             'published_at' => Date::now()
         ]);
         $blog2->media()->create([
-            'file_path' => 'blogs/blog.jpg',
+            'file_path' => '/images/blogs/blog.jpg',
             'file_name' => 'blog.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',
@@ -133,7 +133,7 @@ class BlogSeeder extends Seeder
             'category_id' => $category4->id,
         ]);
         $blog3->media()->create([
-            'file_path' => 'blogs/blog.jpg',
+            'file_path' => '/images/blogs/blog.jpg',
             'file_name' => 'blog.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',
@@ -150,7 +150,7 @@ class BlogSeeder extends Seeder
             'category_id' => $category5->id,
         ]);
         $blog4->media()->create([
-            'file_path' => 'blogs/blog.jpg',
+            'file_path' => '/images/blogs/blog.jpg',
             'file_name' => 'blog.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',
@@ -167,7 +167,7 @@ class BlogSeeder extends Seeder
             'category_id' => $category2->id,
         ]);
         $blog5->media()->create([
-            'file_path' => 'blogs/blog.jpg',
+            'file_path' => '/images/blogs/blog.jpg',
             'file_name' => 'blog.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',
@@ -184,7 +184,7 @@ class BlogSeeder extends Seeder
             'category_id' => $category3->id,
         ]);
         $blog6->media()->create([
-            'file_path' => 'blogs/blog.jpg',
+            'file_path' => '/images/blogs/blog.jpg',
             'file_name' => 'blog.jpg',
             'file_size' => '500',
             'file_type' => 'image/jpg',

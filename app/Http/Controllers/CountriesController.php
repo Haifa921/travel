@@ -41,7 +41,7 @@ class CountriesController extends Controller
         ]);
         if ($request->hasFile('image')) {
             //upload and delete
-            $image = $request->file('image')->store('countries');
+            $image = $request->file('image')->store('countries','public');
 
             $c->media()->create([
                 'file_path' => $image,
@@ -98,10 +98,10 @@ class CountriesController extends Controller
         if ($request->hasFile('image')) {
             //upload and delete
             // dd('');
-            $image = $request->file('image')->store('countries');
-
+            $image = $request->file('image')->store('countries','public');
+            $country->media()->delete();
             $country->media()->create([
-                'file_path' => $image,
+                'file_path' => '/storage/'.$image,
                 'file_name' => $request->file('image')->getClientOriginalName(),
                 'file_size' => '500',
                 'file_type' => 'image/jpg',
@@ -110,6 +110,7 @@ class CountriesController extends Controller
                 'published' => true,
             ]);
         }
+        dd($country->media->file_path);
         session()->flash('success', 'Country updated successfully.');
 
         return redirect(route('countries.index'));
@@ -123,7 +124,7 @@ class CountriesController extends Controller
      */
     public function destroy(Country $country)
     {
-        if ($country->tours->count() > 0) {
+        if ($country->tours != null && $country->tours->count() > 0) {
             session()->flash('error', 'Category cannot be deleted as it is linked to a tour');
 
             return redirect()->back();

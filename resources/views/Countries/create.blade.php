@@ -22,7 +22,7 @@
                 </div>
                 @if (isset($country->media))
                     <div class=" form-group">
-                        <img src="images/{{ $country->media->file_path }}" alt="" style="width: 100%">
+                        <img src="{{ $country->media->file_path }}" alt="" style="width: 100%">
                     </div>
                 @endif
 
