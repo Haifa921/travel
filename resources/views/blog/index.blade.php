@@ -24,7 +24,7 @@
                 @foreach ($blog as $blog)
                 <tr>
                     <td>
-                        <img src="{{asset('/storage/' . $blog->image)}}" width="120px" height="60px"
+                        <img src="{{asset('images/' . $blog->media->file_path)}}" width="120px" height="60px"
                             class="img-thumbnail" alt="responsive image">
                     </td>
                     <td>
