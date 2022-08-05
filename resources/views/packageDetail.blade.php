@@ -28,13 +28,13 @@
                                     stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                                </svg> 
-                                @if (count($tour->tags)>0)
-                                @foreach ($tour->tags as $tag)
-                                    <i>{{$tag->name}}</i>
-                                @endforeach
+                                </svg>
+                                @if (count($tour->tags) > 0)
+                                    @foreach ($tour->tags as $tag)
+                                        <i>{{ $tag->name }}</i>
+                                    @endforeach
                                 @else
-                                not tags for this tour
+                                    not tags for this tour
                                 @endif
                             </span>
                             {{-- <div class="col-lg-6">
@@ -101,18 +101,25 @@
                     </div>
                     <br />
                     <p>{{ $tour->description }}</p>
-                    <p>  @if (session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
-                    @if (session()->has('error'))
-                        <div class="alert alert-danger">
-                            {{ session()->get('error') }}
-                        </div>
-                    @endif</p>
+                    <div>
+                    <b>Shedule:</b>
+                        <p>{{ $tour->schedule }}</p>
+                    </div>
+                    <p>
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger">
+                                {{ session()->get('error') }}
+                            </div>
+                        @endif
+                    </p>
 
-                    <p><a href="{{route('packages.subscribe',$tour->id)}}" class="btn btn-primary py-3 px-4">subscrip now</a></p>
+                    <p><a href="{{ route('packages.subscribe', $tour->id) }}" class="btn btn-primary py-3 px-4">subscrip
+                            now</a></p>
                 </div>
             </div>
             <hr />

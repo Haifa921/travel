@@ -39,10 +39,8 @@ Route::group(
         Route::get('/packages/{tour}', [ToursController::class, 'show'])->name('packages.show');
         Route::get('/packages/{tour}/subscribe', [ToursController::class, 'subscribe'])->name('packages.subscribe');
 
-        Route::get('/news', [WelcomeController::class, 'blog'])->name('blog.index');
-        Route::get('/news/{slug}', [BlogController::class, 'show'])->name('blog.show');
-        Route::get('/news', [BlogController::class, 'index'])->name('blog.index');
-        Route::get('/news/create', [BlogController::class, 'create'])->name('blog.create');
+        Route::get('/news', [WelcomeController::class, 'blog'])->name('news.index');
+        Route::get('/news/{slug}', [BlogController::class, 'show'])->name('news.show');
         Route::get('/about', [WelcomeController::class, 'about'])->name('about');
         Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
         Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');

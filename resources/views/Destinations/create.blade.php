@@ -98,25 +98,26 @@
                         </select>
                     </div>
                 @endif
+                @if (isset($restauransts))
+                    @if ($restaurants->count() > 0)
+                        <div class="form-group">
+                            <label for="restauransts">{{ trans('blog.Restaurants') }}</label>
 
-                @if ($restaurants->count() > 0)
-                    <div class="form-group">
-                        <label for="restauransts">{{ trans('blog.Restaurants') }}</label>
-
-                        <select name="restaurants" id="restauransts" class="form-control restaurants-selector" multiple>
-                            @foreach ($restaurants as $res)
-                                <option value="{{ $res->id }}"
-                                    @if (isset($destination)) @if ($destination->hasres($res->id))
+                            <select name="restaurants" id="restauransts" class="form-control restaurants-selector" multiple>
+                                @foreach ($restaurants as $res)
+                                    <option value="{{ $res->id }}"
+                                        @if (isset($destination)) @if ($destination->hasres($res->id))
                         selected @endif
-                                    @endif
-                                    >
+                                        @endif
+                                        >
 
-                                    {{ $res->name }}
-                                </option>
-                            @endforeach
+                                        {{ $res->name }}
+                                    </option>
+                                @endforeach
 
-                        </select>
-                    </div>
+                            </select>
+                        </div>
+                    @endif
                 @endif
 
                 <div class="form-group">

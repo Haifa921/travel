@@ -9,7 +9,7 @@
                     <h1 class="mb-3 bread">Travel Tips &amp; Blog</h1>
                     <p class="breadcrumbs">
                         <span class="mr-2"><a href="{{route('home')}}">Home <i class="ion-ios-arrow-forward"></i></a></span>
-                        <span><a href="{{route('blog')}}">News/Tips <i class="ion-ios-arrow-forward"></i></a></span>
+                        <span><a href="{{route('news.index')}}">News/Tips <i class="ion-ios-arrow-forward"></i></a></span>
                         <span>{{ $blog->title }} <i class="ion-ios-arrow-forward"></i></span>
                     </p>
                 </div>
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5 fadeInUp ftco-animated">
                     <h2 class="mb-3">{{ $blog->title }}</h2>
-                    <img src="/images/{{ $blog->media->file_path }}" alt="" class="img-fluid">
+                    <img src="{{ $blog->media->file_path }}" alt="" class="img-fluid">
                     </p>
                     <p>{{ $blog->description }}</p>
                     <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2>
@@ -198,7 +198,7 @@
                         @foreach ($recent as $r)
                             <div class="block-21 mb-4 d-flex">
                                 <a class="blog-img mr-4" href="{{ route('blog.show', $r->slug) }}"
-                                    style="background-image: url('/images/{{ $r->media->file_path }}');"></a>
+                                    style="background-image: url('{{ $r->media->file_path }}');"></a>
                                 <div class="text">
                                     <h3 class="heading"><a href="#">{{ $r->title }}</a></h3>
                                     <div class="meta">

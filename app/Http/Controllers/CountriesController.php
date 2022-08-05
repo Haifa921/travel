@@ -110,7 +110,6 @@ class CountriesController extends Controller
                 'published' => true,
             ]);
         }
-        dd($country->media->file_path);
         session()->flash('success', 'Country updated successfully.');
 
         return redirect(route('countries.index'));

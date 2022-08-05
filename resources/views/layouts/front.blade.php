@@ -96,13 +96,13 @@
                             @endforeach
                         </div>
                     </div>
-                    <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}"><a
-                            href="{{ route('home') }}" class="nav-link">{{ trans('blog.Home') }}</a></li>
+                    <li class="nav-item {{ request()->routeIs('welcome') ? 'active' : '' }}"><a
+                            href="{{ route('welcome') }}" class="nav-link">{{ trans('blog.Home') }}</a></li>
                     <li class="nav-item {{ request()->routeIs('packages.*') ? 'active' : '' }}"><a
                             href="{{ route('packages.index') }}" class="nav-link">{{ trans('blog.Destination') }}</a>
                     </li>
-                    <li class="nav-item {{ request()->routeIs('blog.*') ? 'active' : '' }}"><a
-                            href="{{ route('blog.index') }}" class="nav-link">{{ trans('blog.Blog') }}</a></li>
+                    <li class="nav-item {{ request()->routeIs('news.*') ? 'active' : '' }}"><a
+                            href="{{ route('news.index') }}" class="nav-link">{{ trans('blog.Blog') }}</a></li>
                     <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}"><a
                             href="{{ route('about') }}" class="nav-link">{{ trans('blog.About') }}</a></li>
                     <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}"><a
@@ -116,6 +116,10 @@
 
                             </form>
                         </li>
+                        @if (Auth::user()->role == 'admin')
+                            <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}"><a
+                                    href="{{ route('home') }}" class="nav-link">{{ trans('blog.dashboard') }}</a></li>
+                        @endif
                     @else
                         <li class="nav-item cta"><a href="{{ route('login') }}"
                                 class="nav-link">{{ trans('blog.login') }}</a></li>

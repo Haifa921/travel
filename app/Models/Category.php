@@ -19,5 +19,8 @@ class Category extends Model
     {
         return $this->hasMany(TouristPlace::class);
     }
-
+    public function destinations()
+    {
+        return $this->hasManyThrough(Tour::class, TouristPlace::class);
+    }
 }
