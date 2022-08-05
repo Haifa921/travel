@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Destinations\CreateDestinationsRequest;
 use App\Http\Requests\Destinations\UpdateDestinationsRequest;
 use App\Models\Category;
+use App\Models\Restaurant;
 use App\Models\Tag;
 use App\Models\Tour;
 use App\Models\TouristPlace;
@@ -36,7 +37,10 @@ class DestinationsController extends Controller
      */
     public function create()
     {
-        return view('destinations.create')->with('touristPlace', TouristPlace::all())->with('tags', Tag::all());
+        return view('destinations.create')
+        ->with('touristPlace', TouristPlace::all())
+        ->with('tags', Tag::all())
+        ->with('restaurants', Restaurant::all());
     }
 
     /**

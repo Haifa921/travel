@@ -99,6 +99,26 @@
                     </div>
                 @endif
 
+                @if ($restaurants->count() > 0)
+                    <div class="form-group">
+                        <label for="restauransts">{{ trans('blog.Restaurants') }}</label>
+
+                        <select name="restaurants" id="restauransts" class="form-control restaurants-selector" multiple>
+                            @foreach ($restaurants as $res)
+                                <option value="{{ $res->id }}"
+                                    @if (isset($destination)) @if ($destination->hasres($res->id))
+                        selected @endif
+                                    @endif
+                                    >
+
+                                    {{ $res->name }}
+                                </option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                @endif
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">
                         {{ isset($destination) ? 'Update Tour' : 'Create Tour' }}
@@ -128,6 +148,9 @@
 
         $(document).ready(function() {
             $('.tags-selector').select2();
+        });
+        $(document).ready(function() {
+            $('.restaurants-selector').select2();
         });
     </script>
 @endsection
