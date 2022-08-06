@@ -84,5 +84,9 @@ return [ 'make_your_tours'=>'Make Your Tour Amazing With Us',
 'phone'=>'phone',
 'location'=>'location',
 'Country'=>'Country',
+'Places_to_Travel'=>'Places to Travel',
+'Best_Place_Destination'=>'Best Place Destination',
+'Tour_Destination'=>'Tour_Destination',
+
 
 ];

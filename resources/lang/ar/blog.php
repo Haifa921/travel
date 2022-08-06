@@ -84,6 +84,8 @@ return [ 'make_your_tours'=>'اجعل رحلتك جميلة معنا',
 'phone'=>'الرقم',
 'location'=>'الموقع',
 'Country'=>'البلد',
-
+'Places_to_Travel'=>'اماكن للسفر',
+'Best_Place_Destination'=>'افضل وجهة',
+'Tour_Destination'=>'وجهة سياحية',
 
 ];
