@@ -38,9 +38,9 @@ class DestinationsController extends Controller
     public function create()
     {
         return view('destinations.create')
-        ->with('touristPlace', TouristPlace::all())
-        ->with('tags', Tag::all())
-        ->with('restaurants', Restaurant::all());
+            ->with('touristPlace', TouristPlace::all())
+            ->with('tags', Tag::all())
+            ->with('restaurants', Restaurant::all());
     }
 
     /**
@@ -94,7 +94,7 @@ class DestinationsController extends Controller
     {
         return view('destinations.create')->with('destination', $tour)->with('touristPlace', TouristPlace::all())->with('tags', Tag::all());
     }
-
+   
     /**
      * Update the specified resource in storage.
      *

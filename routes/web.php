@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
 // use App\Http\Controllers\BlogController;
@@ -62,6 +63,7 @@ Route::group(
             Route::resource('places', TouristPlacesController::class);
 
             Route::resource('tours', DestinationsController::class);
+            Route::post('tours/{tour}/status', [DashboardController::class,'status'])->name('subsription.status');
 
             Route::resource('tags', TagsController::class);
 

@@ -40,7 +40,24 @@
                                                 <td>
                                                     {{ $r->price_per_seat }}
                                                 <td>
-                                                    {{$r->status}}
+                                                 <form action="{{ route('subsription.status', $r->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <select class="form-select" name="tour_status"
+                                                        style="outline-style: none;" onchange="this.form.submit()">
+                                                            <option value="paid"
+                                                                @if ($r->status == 'paid') selected @endif>
+                                                                paid</option>
+                                                            <option value="unpaid"
+                                                                @if ($r->status == 'unpaid') selected @endif>
+                                                                unpaid</option>
+                                                            <option value="canceled"
+                                                                @if ($r->status == 'canceled') selected @endif>
+                                                                canceled</option>
+                                                        
+                                                    </select>
+                                                </form>
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach

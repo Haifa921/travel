@@ -27,4 +27,11 @@ class DashboardController extends Controller
         return view('home')
         ->with('reservations',TourSubscription::all());
     }
+    public function status(TourSubscription $tour, Request $request)
+    {
+        $tour->update(['status' => $request->tour_status]);
+        return back()->with([
+            'success' => 'updated successfully',
+        ]);
+    }
 }

@@ -23,7 +23,7 @@
                                 <td>
                                     {{ $tag->name }}
                                 </td>
-                               
+
                                 <td>
                                     <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-info btn-sm">
                                         {{ trans('blog.Edit') }}

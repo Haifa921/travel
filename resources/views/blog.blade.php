@@ -27,7 +27,7 @@
                 @foreach ($blogs as $blog)
                     <div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
                         <div class="blog-entry  justify-content-end" style="width:22rem">
-                            <a href="{{ route('blog.show', $blog->slug) }}" class="block-20"
+                            <a href="{{ route('news.show', $blog->slug) }}" class="block-20"
                                 style="background-image:url({{ $blog->media->file_path }})">
                             </a>
                             <div class="text mt-3 float-right d-block">
