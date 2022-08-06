@@ -6,10 +6,10 @@
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate pb-5 text-center">
-                    <h1 class="mb-3 bread">Contact Us</h1>
-                    <p class="breadcrumbs"><span class="mr-2"><a href="">Home <i
+                    <h1 class="mb-3 bread">{{ trans('blog.Contact_Us') }}</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="">{{ trans('blog.Home') }} <i
                                     class="ion-ios-arrow-forward"></i></a></span>
-                        <span>Contact us <i class="ion-ios-arrow-forward"></i></span>
+                        <span>{{ trans('blog.Contact_Us') }}  <i class="ion-ios-arrow-forward"></i></span>
                     </p>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="icon-map-signs"></span>
                         </div>
-                        <h3 class="mb-2">Address</h3>
+                        <h3 class="mb-2">{{ trans('blog.Address') }}</h3>
                         <p>Ole Sangale Road, off
                             Langata Road, in Madaraka Estate, Nairobi, Kenya.</p>
                     </div>
@@ -34,7 +34,7 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="icon-phone2"></span>
                         </div>
-                        <h3 class="mb-2">Contact Number</h3>
+                        <h3 class="mb-2">{{ trans('blog.Contact_Number') }} </h3>
                         <p><a href="tel://1234567920">+254712345678</a></p>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="icon-paper-plane"></span>
                         </div>
-                        <h3 class="mb-2">Email Address</h3>
+                        <h3 class="mb-2">{{ trans('blog.Email_Address') }} </h3>
                         <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="icon-globe"></span>
                         </div>
-                        <h3 class="mb-2">Website</h3>
+                        <h3 class="mb-2">{{ trans('blog.Website') }}</h3>
                         <p><a href="#">safari.com</a></p>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                         class="bg-light p-5 contact-form">
                         @csrf
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>{{ trans('blog.Name') }}</label>
                             <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}"
                                 name="name" id="name">
 
@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Email</label>
+                            <label>{{ trans('blog.Email') }}</label>
                             <input type="email" class="form-control {{ $errors->has('email') ? 'error' : '' }}"
                                 name="email" id="email">
 
@@ -101,7 +101,7 @@
 
 
                         <div class="form-group">
-                            <label>Subject</label>
+                            <label>{{ trans('blog.Subject') }}</label>
                             <input type="text" class="form-control {{ $errors->has('subject') ? 'error' : '' }}"
                                 name="subject" id="subject">
 
@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Message</label>
+                            <label>{{ trans('blog.Message') }}</label>
                             <textarea class="form-control {{ $errors->has('message') ? 'error' : '' }}" name="message" id="message"
                                 rows="4"></textarea>
 

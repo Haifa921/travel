@@ -64,7 +64,7 @@
                 </div> --}}
 
                 <div class="form-group">
-                    <label for="takeoff_date">{{ trans('blog.takeoff_date') }} </label>
+                    <label for="takeoff_date">{{ trans('blog.take_off_date') }} </label>
                     <input type="text" class="form-control" name="takeoff_date" id="takeoff_date"
                         value="{{ isset($destination) ? $destination->takeoff_date : '' }}"">
                 </div>
@@ -74,7 +74,7 @@
                         value="{{ isset($destination) ? $destination->published_at : '' }}"">
                 </div>
                 <div class="form-group">
-                    <label for="duration">{{ trans('blog.duration') }} in days</label>
+                    <label for="duration">{{ trans('blog.duration_in_days') }}  </label>
                     <input type="number" name="duration" class="form-control" name="duration" id="duration"
                         value="{{ isset($destination) ? $destination->duration : '' }}" />
                 </div>

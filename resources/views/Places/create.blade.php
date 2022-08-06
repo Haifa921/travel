@@ -17,25 +17,25 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="name">name</label>
+                    <label for="name">{{ trans('blog.name') }}</label>
                     <input type="text" class="form-control" name="name" id="name"
                         value="{{ isset($place) ? $place->name : '' }}">
                 </div>
 
                 <div class="form-group">
-                    <label for="Description">Description</label>
+                    <label for="Description">{{ trans('blog.Description') }}</label>
                     <textarea name="description" class="form-control" name="description" id="description" cols="5" rows="5">{{ isset($place) ? $place->description : '' }}</textarea>
                 </div>
 
                 {{-- <div class="form-group">
-                    <label for="content">Content</label>
+                    <label for="content">{{ trans('blog.Content') }}</label>
                     <input id="content" type="hidden" name="content"
                         value="{{ isset($place) ? $place->content : '' }}">
                     <trix-editor input="content"></trix-editor>
                 </div> --}}
 
                 {{-- <div class="form-group">
-                    <label for="published_at">Published At</label>
+                    <label for="published_at">{{ trans('blog.Published_At') }} </label>
                     <input type="text" class="form-control" name="published_at" id="published_at"
                         value="{{ isset($place) ? $place->published_at : '' }}"">
                 </div> --}}
@@ -49,12 +49,12 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="image">Image</label>
+                    <label for="image">{{ trans('blog.Image') }}</label>
                     <input type="file" class="form-control" name="images[]" id="image" multiple>
                 </div>
 
                 <div class="form-group">
-                    <label for="country">Country</label>
+                    <label for="country">{{ trans('blog.Country') }}</label>
                     <select name="country_id" id="country" class="form-control">
                         @foreach ($countries as $country)
                             <option value="{{ $country->id }}"
@@ -68,7 +68,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="category">Category</label>
+                    <label for="category">{{ trans('blog.Category') }}</label>
                     <select name="category_id" id="category" class="form-control">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"

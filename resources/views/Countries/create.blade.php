@@ -16,7 +16,7 @@
                     @method('PUT')
                 @endif
                 <div class="form-group">
-                    <label for="image">Name</label>
+                    <label for="image">{{ trans('blog.Name') }}</label>
                     <input type="text" id="name" class="form-control" name="name"
                         value="{{ isset($country) ? $country->name : '' }}">
                 </div>
@@ -27,7 +27,7 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="image">Image</label>
+                    <label for="image">{{ trans('blog.Image') }}</label>
                     <input type="file" class="form-control" name="image" id="image">
                 </div>
                 <div class="form-group">

@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="d-flex justify-content-end mb-2">
-        <a href="{{ route('tours.create') }}" class="btn btn-success ">Add Tour</a>
+        <a href="{{ route('tours.create') }}" class="btn btn-success ">{{ trans('blog.Add_Tour') }} </a>
     </div>
     <div class="card card-default">
-        <div class="card-header">Tours</div>
+        <div class="card-header">{{ trans('blog.Tours') }} </div>
 
         <div class="card-body">
             @if ($destinations->count() > 0)
@@ -47,7 +47,7 @@
                                 @else
                                     <td>
                                         <a href="{{ route('tours.edit', $destination->id) }}"
-                                            class="btn btn-info btn-sm">Edit</a>
+                                            class="btn btn-info btn-sm">{{ trans('blog.Edit') }}</a>
                                     </td>
                                 @endif
 

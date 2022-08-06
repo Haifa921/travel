@@ -3,21 +3,21 @@
 @section('content')
 
     <div class="d-flex justify-content-end mb-2">
-        <a href="{{ route('places.create') }}" class="btn btn-success ">Add Place</a>
+        <a href="{{ route('places.create') }}" class="btn btn-success ">{{ trans('blog.Add_Place') }} </a>
     </div>
 
 
     <div class="card card-default">
-        <div class="card-header">Places</div>
+        <div class="card-header">{{ trans('blog.Places') }}</div>
 
         <div class="card-body">
             @if ($places->count() > 0)
                 <table class="table">
                     <thead>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Country</th>
+                        <th>{{ trans('blog.Image') }}</th>
+                        <th>{{ trans('blog.Title') }}</th>
+                        <th>{{ trans('blog.Category') }}</th>
+                        <th>{{ trans('blog.Country') }}</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -49,7 +49,7 @@
                                 @else
                                     <td>
                                         <a href="{{ route('places.edit', $place->id) }}"
-                                            class="btn btn-info btn-sm">Edit</a>
+                                            class="btn btn-info btn-sm">{{ trans('blog.Edit') }}</a>
                                     </td>
                                 @endif
 

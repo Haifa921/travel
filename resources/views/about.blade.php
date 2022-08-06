@@ -6,9 +6,9 @@
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate pb-5 text-center">
-                    <h1 class="mb-3 bread">About Us</h1>
-                    <p class="breadcrumbs"><span class="mr-2"><a href="">Home <i
-                                    class="ion-ios-arrow-forward"></i></a></span> <span>About us <i
+                    <h1 class="mb-3 bread"> {{ trans('blog.About_Us') }}  </h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="">{{ trans('blog.Home') }}  <i
+                                    class="ion-ios-arrow-forward"></i></a></span> <span>{{ trans('blog.About_Us') }}   <i
                                 class="ion-ios-arrow-forward"></i></span></p>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="story_heading">
-                            <h3>Our Story</h3>
+                            <h3>{{ trans('blog.Our_Story') }}  </h3>
                         </div>
                         <div class="row">
                             <div class="col-lg-11 offset-lg-1">
@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row justify-content-center pb-4">
                 <div class="col-md-7 text-center heading-section ftco-animate">
-                    <h2 class="mb-4">Tourist Feedback</h2>
+                    <h2 class="mb-4">{{ trans('blog.Tourist_Feedback') }}  </h2>
                 </div>
             </div>
             <div class="row ftco-animate">

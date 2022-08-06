@@ -18,7 +18,7 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="image">Name</label>
+                    <label for="image">{{ trans('blog.Name') }}</label>
                     <input type="text" id="name" class="form-control" name="name"
                         value="{{ isset($restaurant) ? $restaurant->name : '' }}">
                 </div>
@@ -39,17 +39,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="stars">Stars</label>
+                    <label for="stars">{{ trans('blog.country') }}  </th>
+            <th>{{ trans('blog.Stars') }} </label>
                     <input type="number" id="stars" class="form-control" name="stars"
                         value="{{ isset($restaurant) ? $restaurant->stars : '' }}">
                 </div>
                 <div class="form-group">
-                    <label for="capacity">capacity</label>
+                    <label for="capacity">{{ trans('blog.capacity') }}</label>
                     <input type="number" id="capacity" class="form-control" name="capacity"
                         value="{{ isset($restaurant) ? $restaurant->capacity : '' }}">
                 </div>
                 <div class="form-group">
-                    <label for="phone">phone</label>
+                    <label for="phone">{{ trans('blog.phone') }}</label>
                     <input type="tel" id="phone" class="form-control" name="phone"
                         value="{{ isset($restaurant) ? $restaurant->phone : '' }}">
                 </div>

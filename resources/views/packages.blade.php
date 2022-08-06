@@ -6,13 +6,13 @@
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate pb-5 text-center">
-                    <h1 class="mb-3 bread">Places to Travel</h1>
+                    <h1 class="mb-3 bread">{{ trans('blog.Places_to_Travel') }}    </h1>
                     <p class="breadcrumbs"><span class="mr-2">
                             <a href="">
-                                Home <i class="ion-ios-arrow-forward"></i>
+                            {{ trans('blog.Home') }} <i class="ion-ios-arrow-forward"></i>
                             </a>
                         </span>
-                        <span>Destinations<i class="ion-ios-arrow-forward"></i></span>
+                        <span>{{ trans('blog.Destinations') }}<i class="ion-ios-arrow-forward"></i></span>
                     </p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row justify-content-center pb-4">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">Best Place Destination</h2>
+                    <h2 class="mb-4">{{ trans('blog.Best_Place_Destination') }}  </h2>
                 </div>
             </div>
             <div class="row">
@@ -54,7 +54,7 @@
 		        		<div class="row">
 		        			<div class="col-lg align-items-end">
 		        				<div class="form-group">
-		        					<label for="#">Destination</label>
+		        					<label for="#">{{ trans('blog.Destination') }}</label>
 		          				<div class="form-field">
 		          					<div class="icon"><span class="ion-ios-search"></span></div>
 				                <input type="text" class="form-control" placeholder="Search place">
@@ -64,7 +64,7 @@
 		        			
 		        			<div class="col-lg align-items-end">
 		        				<div class="form-group">
-		        					<label for="#">Price Limit</label>
+		        					<label for="#">{{ trans('blog.Price_Limit') }} </label>
 		        					<div class="form-field">
 		          					<div class="select-wrap">
 		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -108,7 +108,7 @@
         <div class="container">
             <div class="row justify-content-center pb-4">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">Tour Destination</h2>
+                    <h2 class="mb-4">{{ trans('blog.Tour_Destination') }} </h2>
                 </div>
             </div>
             <div class="row">
@@ -137,7 +137,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                                             </svg>
-                                    </span>available</li>
+                                    </span>{{ trans('blog.available') }}</li>
                                     <li><span><svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                                 style="width:20px">
