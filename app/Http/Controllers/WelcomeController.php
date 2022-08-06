@@ -16,12 +16,12 @@ class WelcomeController extends Controller
     public function index()
     {
 
-        // $search = request()->query('search');
-        // if (request()->query('search')) {
-        //     $destinations = Destinations::where('title', 'LIKE', "%{$search}%")->simplePaginate(3);
-        // } else {
-        //     $destinations = Destinations::simplePaginate(3);
-        // }
+        $search = request()->query('search');
+        if (request()->query('search')) {
+            $destinations = TouristPlace::where('title', 'LIKE', "%{$search}%")->simplePaginate(3);
+        } else {
+            $destinations = TouristPlace::simplePaginate(3);
+        }
 
         // return view('welcome')
         //     ->with('destinations', $destinations)
